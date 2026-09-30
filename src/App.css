@@ -578,12 +578,14 @@ h2 {
 .day-list {
   height: 350px;
   overflow-y: auto;
+  touch-action: pan-y;
   overscroll-behavior: contain;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--surface);
   scrollbar-color: #ccd8d4 transparent;
   scrollbar-width: thin;
+  
 }
 
 .day-option {

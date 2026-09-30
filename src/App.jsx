@@ -425,7 +425,6 @@ function SelectionList({
   entries,
   selected,
   mode,
-  anchorIndex,
   onToggle,
   onRange,
   onDragStart,
@@ -449,19 +448,26 @@ function SelectionList({
   function handlePointerDown(event, entry, index) {
     if (mode !== 'range' || event.button !== 0 || !onDragStart) return
 
-    event.preventDefault()
     draggingRef.current = true
     onDragStart(entry.name, index)
   }
 
-  function handlePointerEnter(index) {
-    if (draggingRef.current && mode === 'range') {
-      onRange(index)
-    }
+  function handlePointerMove(event) {
+    if (!draggingRef.current || mode !== 'range') return
+
+    const row = event.target.closest('.day-option')
+    if (!row) return
+
+    const index = Number(row.dataset.index)
+    if (Number.isInteger(index)) onRange(index)
   }
 
   return (
-    <div className="day-list" tabIndex={0}>
+    <div
+      className="day-list"
+      tabIndex={0}
+      onPointerMove={handlePointerMove}
+    >
       {entries.map((entry, index) => {
         const checked = selected.has(entry.name)
 
@@ -469,17 +475,19 @@ function SelectionList({
           <label
             className={`day-option ${checked ? 'selected' : ''}`}
             key={entry.name}
+            data-index={index}
             onPointerDown={(event) =>
               handlePointerDown(event, entry, index)
             }
-            onPointerEnter={() => handlePointerEnter(index)}
           >
             <input
               type="checkbox"
               checked={checked}
-              onChange={(event) =>
-                onToggle(entry.name, index, event.target.checked)
-              }
+              onChange={(event) => {
+                if (mode === 'individual') {
+                  onToggle(entry.name, index, event.target.checked)
+                }
+              }}
               aria-label={entry.name}
             />
             <span className="day-option-name">{entry.name}</span>
@@ -649,13 +657,20 @@ function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
             onChange={(mode) => setSelection((current) => ({ ...current, mode }))}
           />
           <SelectionList
-            entries={entries}
-            selected={selected}
-            mode={selection.mode}
-            anchorIndex={selection.anchorIndex}
-            onToggle={toggle}
-            onRange={rangeTo}
-          />
+  entries={entries}
+  selected={selected}
+  mode={selection.mode}
+  onToggle={toggle}
+  onRange={rangeTo}
+  onDragStart={(name, index) => {
+    setSelection((current) => ({
+      ...current,
+      names: [name],
+      anchorIndex: index,
+    }))
+    onChange([])
+  }}
+/>
           <div className="selection-summary">
             <strong>{selected.size}개 분류</strong>
             <span>{words.length.toLocaleString('ko-KR')}개 단어</span>
