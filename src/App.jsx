@@ -92,7 +92,7 @@ const BOOKS = {
   },
   neunglyul: {
     id: 'neunglyul',
-    name: '능률 VOCA',
+    name: '능률보카 표제어',
     entries: makeNeunglyulEntries([
       ...neunglyulWords,
       ...neunglyulExtra,
