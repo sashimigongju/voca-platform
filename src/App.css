@@ -894,7 +894,7 @@ h2 {
 
 .student-table {
   width: 100%;
-  min-width: 650px;
+  min-width: 740px;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -912,19 +912,23 @@ h2 {
 }
 
 .student-table th:nth-child(1) {
-  width: 22%;
+  width: 20%;
 }
 
 .student-table th:nth-child(2) {
-  width: 45%;
+  width: 19%;
 }
 
 .student-table th:nth-child(3) {
-  width: 22%;
+  width: 33%;
 }
 
 .student-table th:nth-child(4) {
-  width: 11%;
+  width: 18%;
+}
+
+.student-table th:nth-child(5) {
+  width: 10%;
 }
 
 .student-table td {
@@ -938,6 +942,7 @@ h2 {
 }
 
 .student-name-input,
+.student-date-input,
 .question-count-input {
   width: 100%;
   height: 34px;
@@ -1191,7 +1196,7 @@ h2 {
 .paper-subtitle {
   margin-top: 0.5mm;
   color: #555555;
-  font-size: 6.5pt;
+  font-size: 7.5pt;
   line-height: 1.25;
 }
 
@@ -1203,7 +1208,7 @@ h2 {
   align-items: center;
   gap: 3mm;
   color: #333333;
-  font-size: 8pt;
+  font-size: 7.5pt;
   white-space: nowrap;
 }
 
@@ -1282,7 +1287,7 @@ h2 {
   justify-content: center;
   min-width: 0;
   border-right: 1px solid #888888;
-  font-size: 6.8pt;
+  font-size: 7.5pt;
   font-weight: 700;
 }
 
@@ -1292,7 +1297,7 @@ h2 {
   align-items: center;
   padding: 0.4mm 0.8mm;
   color: #111827;
-  font-size: 6.3pt;
+  font-size: 9pt;
   line-height: 1.05;
   white-space: pre-line;
   overflow: hidden;
@@ -1311,7 +1316,7 @@ h2 {
 
 .question-answer.filled-answer {
   color: #111827;
-  font-size: 6.1pt;
+  font-size: 9pt;
   font-weight: 700;
   line-height: 1.05;
   white-space: pre-line;
@@ -1324,7 +1329,7 @@ h2 {
   right: 6mm;
   bottom: 3mm;
   color: #616967;
-  font-size: 6.5pt;
+  font-size: 9pt;
   text-align: right;
 }
 
@@ -1558,5 +1563,17 @@ h2 {
   .paper-student-info input {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
+  }
+}
+
+.browser-recommendation {
+  margin: -12px 0 18px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+@media print {
+  .browser-recommendation {
+    display: none !important;
   }
 }

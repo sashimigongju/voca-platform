@@ -1,8 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import onlyoneVoca from './data/onlyoneVoca.json'
-import neunglyulWords from './data/neunglyul.json'
-import neunglyulExtra from './data/neunglyulExtra.json'
 import './App.css'
+
+const dataModules = import.meta.glob('./data/*.json', {
+  eager: false,
+  import: 'default',
+})
+
+const DATA_LOADER = {
+  onlyone: () => dataModules['./data/onlyoneVoca.json'](),
+  neunglyul: () =>
+    Promise.all([
+      dataModules['./data/neunglyul.json'](),
+      dataModules['./data/neunglyulExtra.json'](),
+    ]).then(([words, extra]) => [...words, ...extra]),
+  neunglyulBase: () => dataModules['./data/neunglyul.base.json'](),
+}
 
 const QUESTIONS_PER_PAGE = 50
 
@@ -47,14 +59,13 @@ function makeNeunglyulEntries(words) {
     if (category === undefined || category === null) return
 
     const text = String(category).trim()
-    const name = /^\d+$/.test(text)
-      ? `Day ${text.padStart(2, '0')}`
-      : text
+    const name = /^\d+$/.test(text) ? `Day ${text.padStart(2, '0')}` : text
 
     if (!groups.has(name)) groups.set(name, [])
 
     groups.get(name).push({
       id: `${name}-${item.no ?? index + 1}`,
+      no: Number.isFinite(Number(item.no)) ? Number(item.no) : index + 1,
       word: toText(item.english),
       meaning: toText(item.korean),
     })
@@ -63,40 +74,44 @@ function makeNeunglyulEntries(words) {
   return [...groups.entries()]
     .map(([name, groupWords]) => ({
       name,
-      words: groupWords.filter((word) => word.word && word.meaning),
+      words: [...groupWords]
+        .sort((a, b) => a.no - b.no)
+        .filter((word) => word.word && word.meaning),
     }))
     .filter((entry) => entry.words.length > 0)
-   .sort((a, b) => {
-  const aIsDay = /^Day\s+\d+$/i.test(a.name)
-  const bIsDay = /^Day\s+\d+$/i.test(b.name)
+    .sort((a, b) => {
+      const aIsDay = /^Day\s+\d+$/i.test(a.name)
+      const bIsDay = /^Day\s+\d+$/i.test(b.name)
 
-  // Day 분류를 일반 분류보다 앞에 둠
-  if (aIsDay && !bIsDay) return -1
-  if (!aIsDay && bIsDay) return 1
+      // Day 분류를 일반 분류보다 앞에 둠
+      if (aIsDay && !bIsDay) return -1
+      if (!aIsDay && bIsDay) return 1
 
-  // Day끼리는 숫자순
-  if (aIsDay && bIsDay) {
-    return getDayNumber(a.name) - getDayNumber(b.name)
-  }
+      // Day끼리는 숫자순
+      if (aIsDay && bIsDay) {
+        return getDayNumber(a.name) - getDayNumber(b.name)
+      }
 
-  // 일반 분류끼리는 JSON에 등장한 순서 유지
-  return 0
-})
+      // 일반 분류끼리는 JSON에 등장한 순서 유지
+      return 0
+    })
 }
 
 const BOOKS = {
   onlyone: {
     id: 'onlyone',
     name: '온리원보카',
-    entries: makeOnlyoneEntries(onlyoneVoca),
+    entries: [],
   },
   neunglyul: {
     id: 'neunglyul',
     name: '능률보카 표제어',
-    entries: makeNeunglyulEntries([
-      ...neunglyulWords,
-      ...neunglyulExtra,
-    ]),
+    entries: [],
+  },
+  neunglyulBase: {
+    id: 'neunglyulBase',
+    name: '능률보카 기본(어원편)',
+    entries: [],
   },
 }
 
@@ -173,6 +188,7 @@ function makeStudent(id, entries, source = null) {
   return {
     id,
     name: '',
+    examDate: source?.examDate ?? '',
     names,
     mode: source?.mode ?? 'range',
     anchorName: source?.anchorName ?? names[0] ?? null,
@@ -187,10 +203,7 @@ function shuffle(items) {
   const result = [...items]
   for (let index = result.length - 1; index > 0; index -= 1) {
     const randomIndex = Math.floor(Math.random() * (index + 1))
-    ;[result[index], result[randomIndex]] = [
-      result[randomIndex],
-      result[index],
-    ]
+    ;[result[index], result[randomIndex]] = [result[randomIndex], result[index]]
   }
   return result
 }
@@ -249,10 +262,7 @@ function makeDocuments(groups, entries, includeAnswers) {
 function getScrollIndex(element) {
   const rows = [...element.querySelectorAll('.day-option')]
   if (rows.length === 0) return null
-  if (
-    element.scrollTop + element.clientHeight >=
-    element.scrollHeight - 3
-  ) {
+  if (element.scrollTop + element.clientHeight >= element.scrollHeight - 3) {
     return Number(rows.at(-1).dataset.index)
   }
   const edge = element.getBoundingClientRect().top + 2
@@ -267,7 +277,11 @@ function Breadcrumbs({ items }) {
         <span className="breadcrumb-item" key={`${item.label}-${index}`}>
           {index > 0 && <span className="breadcrumb-separator">/</span>}
           {item.onClick ? (
-            <button className="breadcrumb-button" type="button" onClick={item.onClick}>
+            <button
+              className="breadcrumb-button"
+              type="button"
+              onClick={item.onClick}
+            >
               {item.label}
             </button>
           ) : (
@@ -310,6 +324,9 @@ function MenuHome({ onOpen }) {
         <p className="eyebrow">VOCAB DESK</p>
         <h1>메뉴</h1>
       </header>
+      <p className="browser-recommendation">
+  안정성 있는 접속을 위해 크롬 브라우저를 권장합니다.
+      </p>
       <div className="menu-grid">
         <button className="menu-card" type="button" onClick={onOpen}>
           <span className="menu-card-top">
@@ -327,7 +344,7 @@ function MenuHome({ onOpen }) {
   )
 }
 
-function BookSelectPage({ onHome, onSelect }) {
+function BookSelectPage({ books, loadingBookIds, onHome, onSelect }) {
   return (
     <section>
       <Breadcrumbs
@@ -338,27 +355,38 @@ function BookSelectPage({ onHome, onSelect }) {
         <h1>단어장 선택</h1>
       </header>
       <div className="book-grid">
-        {Object.values(BOOKS).map((book) => (
-          <button
-            className="book-card"
-            type="button"
-            key={book.id}
-            onClick={() => onSelect(book.id)}
-          >
-            <span className="book-card-top">
-              <span className="book-title">{book.name}</span>
-              <span className="status-tag status-tag-active">사용 가능</span>
-            </span>
-            <span className="book-stat-line">
-              <strong>{countWords(book.entries).toLocaleString('ko-KR')}</strong>
-              개 단어 · <strong>{book.entries.length}</strong>개 분류
-            </span>
-            <span className="book-card-bottom">
-              <span>열기</span>
-              <span className="arrow">→</span>
-            </span>
-          </button>
-        ))}
+        {Object.values(BOOKS).map((book) => {
+          const current = books[book.id] ?? book
+          return (
+            <button
+              className="book-card"
+              type="button"
+              key={book.id}
+              onClick={() => onSelect(book.id)}
+            >
+              <span className="book-card-top">
+                <span className="book-title">{book.name}</span>
+                <span className="status-tag status-tag-active">사용 가능</span>
+              </span>
+              <span className="book-stat-line">
+                {loadingBookIds.includes(book.id) ? (
+                  '단어 정보를 불러오는 중...'
+                ) : (
+                  <>
+                    <strong>
+                      {countWords(current.entries).toLocaleString('ko-KR')}
+                    </strong>
+                    개 단어 · <strong>{current.entries.length}</strong>개 분류
+                  </>
+                )}
+              </span>
+              <span className="book-card-bottom">
+                <span>열기</span>
+                <span className="arrow">→</span>
+              </span>
+            </button>
+          )
+        })}
       </div>
     </section>
   )
@@ -379,14 +407,22 @@ function BookMenu({ book, onHome, onBooks, onOpen }) {
         <h1>출제 방식 선택</h1>
       </header>
       <div className="tool-grid">
-        <button className="tool-card" type="button" onClick={() => onOpen('single')}>
+        <button
+          className="tool-card"
+          type="button"
+          onClick={() => onOpen('single')}
+        >
           <span>
             <strong>개인 단어 시험지</strong>
             <span>분류 범위와 문항 수 설정</span>
           </span>
           <span className="tool-arrow">→</span>
         </button>
-        <button className="tool-card" type="button" onClick={() => onOpen('batch')}>
+        <button
+          className="tool-card"
+          type="button"
+          onClick={() => onOpen('batch')}
+        >
           <span>
             <strong>여러 명 단어 선택</strong>
             <span>학생별 분류 설정 후 한 번에 인쇄</span>
@@ -463,11 +499,7 @@ function SelectionList({
   }
 
   return (
-    <div
-      className="day-list"
-      tabIndex={0}
-      onPointerMove={handlePointerMove}
-    >
+    <div className="day-list" tabIndex={0} onPointerMove={handlePointerMove}>
       {entries.map((entry, index) => {
         const checked = selected.has(entry.name)
 
@@ -476,9 +508,7 @@ function SelectionList({
             className={`day-option ${checked ? 'selected' : ''}`}
             key={entry.name}
             data-index={index}
-            onPointerDown={(event) =>
-              handlePointerDown(event, entry, index)
-            }
+            onPointerDown={(event) => handlePointerDown(event, entry, index)}
           >
             <input
               type="checkbox"
@@ -505,14 +535,22 @@ function QuestionGrid({ questions, showAnswers }) {
   const rows = Math.ceil(questions.length / 2)
   const columns = [questions.slice(0, rows), questions.slice(rows)]
   return (
-    <div className="question-grid" style={{ height: `${Math.min(265, Math.max(10.6, rows * 10.6))}mm` }}>
+    <div
+      className="question-grid"
+      style={{ height: `${Math.min(265, Math.max(10.6, rows * 10.6))}mm` }}
+    >
       {columns.map((column, columnIndex) => (
         <div className="question-column" key={columnIndex}>
           {column.map((question) => (
-            <div className="question-row" key={`${question.id}-${question.number}`}>
+            <div
+              className="question-row"
+              key={`${question.id}-${question.number}`}
+            >
               <div className="question-number">{question.number}</div>
               <div className="question-prompt">{question.prompt}</div>
-              <div className={`question-answer ${showAnswers ? 'filled-answer' : ''}`}>
+              <div
+                className={`question-answer ${showAnswers ? 'filled-answer' : ''}`}
+              >
                 {showAnswers ? question.answer : ''}
               </div>
             </div>
@@ -528,21 +566,34 @@ function PrintablePage({ document }) {
   const last = document.questions.at(-1)?.number ?? 0
   const answer = document.type === 'answer'
   return (
-    <article className={`print-page ${answer ? 'answer-page' : 'exam-page'} ${document.breakAfter ? 'page-break-after' : 'page-break-last'}`}>
+    <article
+      className={`print-page ${answer ? 'answer-page' : 'exam-page'} ${document.breakAfter ? 'page-break-after' : 'page-break-last'}`}
+    >
       <header className="paper-header">
         <div className="paper-title">
-          {answer ? '단어 시험 정답지' : '단어 시험지'} ({document.pageIndex + 1}/{document.pageCount})
+          {answer ? '단어 시험 정답지' : '단어 시험지'} (
+          {document.pageIndex + 1}/{document.pageCount})
         </div>
         <div className="paper-subtitle">
-          {document.bookName} · {document.summary} · {document.order === 'random' ? '랜덤' : '순서대로'} · {first}–{last}번
+          {document.bookName} · {document.summary} ·{' '}
+          {document.order === 'random' ? '랜덤' : '순서대로'} · {first}–{last}번
         </div>
         <div className="paper-student-info">
           {document.studentName ? (
-            <span>이름 <strong>{document.studentName}</strong></span>
+            <span>
+              이름 <strong>{document.studentName}</strong>
+            </span>
           ) : (
-            <span className="blank-student-name">이름 <i /></span>
+            <span className="blank-student-name">
+              이름 <i />
+            </span>
           )}
-          {!answer && <span className="blank-date">날짜 <i /></span>}
+          {!answer && (
+            <span className="blank-date">
+              날짜{' '}
+              {document.examDate ? <strong>{document.examDate}</strong> : <i />}
+            </span>
+          )}
         </div>
       </header>
       <QuestionGrid questions={document.questions} showAnswers={answer} />
@@ -566,6 +617,8 @@ function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
     anchorIndex: entries.length ? 0 : null,
   })
   const [direction, setDirection] = useState('en-ko')
+  const [studentName, setStudentName] = useState('')
+  const [examDate, setExamDate] = useState('')
   const [order, setOrder] = useState('random')
   const [count, setCount] = useState(String(QUESTIONS_PER_PAGE))
   const [status, setStatus] = useState('')
@@ -620,10 +673,11 @@ function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
         [
           {
             studentId: 'single',
-            studentName: '',
+            studentName: studentName || '',
             bookName: book.name,
             names: selection.names,
             direction,
+            examDate: examDate || '',
             order,
             questions,
           },
@@ -654,23 +708,25 @@ function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
         <aside className="card day-card">
           <ModeToggle
             value={selection.mode}
-            onChange={(mode) => setSelection((current) => ({ ...current, mode }))}
+            onChange={(mode) =>
+              setSelection((current) => ({ ...current, mode }))
+            }
           />
           <SelectionList
-  entries={entries}
-  selected={selected}
-  mode={selection.mode}
-  onToggle={toggle}
-  onRange={rangeTo}
-  onDragStart={(name, index) => {
-    setSelection((current) => ({
-      ...current,
-      names: [name],
-      anchorIndex: index,
-    }))
-    onChange([])
-  }}
-/>
+            entries={entries}
+            selected={selected}
+            mode={selection.mode}
+            onToggle={toggle}
+            onRange={rangeTo}
+            onDragStart={(name, index) => {
+              setSelection((current) => ({
+                ...current,
+                names: [name],
+                anchorIndex: index,
+              }))
+              onChange([])
+            }}
+          />
           <div className="selection-summary">
             <strong>{selected.size}개 분류</strong>
             <span>{words.length.toLocaleString('ko-KR')}개 단어</span>
@@ -682,15 +738,39 @@ function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
           </div>
           <div className="settings-grid">
             <label className="field">
+              학생 이름
+              <input
+                type="text"
+                value={studentName}
+                onChange={(event) => setStudentName(event.target.value)}
+                placeholder="이름 입력"
+              />
+            </label>
+
+            <label className="field">
+              시험 날짜
+              <input
+                type="date"
+                value={examDate}
+                onChange={(event) => setExamDate(event.target.value)}
+              />
+            </label>
+            <label className="field">
               출제 방향
-              <select value={direction} onChange={(event) => setDirection(event.target.value)}>
+              <select
+                value={direction}
+                onChange={(event) => setDirection(event.target.value)}
+              >
                 <option value="en-ko">영어 → 한국어 뜻</option>
                 <option value="ko-en">한국어 뜻 → 영어</option>
               </select>
             </label>
             <label className="field">
               출제 순서
-              <select value={order} onChange={(event) => setOrder(event.target.value)}>
+              <select
+                value={order}
+                onChange={(event) => setOrder(event.target.value)}
+              >
                 <option value="random">랜덤</option>
                 <option value="sequential">분류 순서대로</option>
               </select>
@@ -707,7 +787,11 @@ function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
             </label>
           </div>
           <div className="action-row">
-            <button className="button button-primary" type="button" onClick={generate}>
+            <button
+              className="button button-primary"
+              type="button"
+              onClick={generate}
+            >
               시험지 만들기
             </button>
             <button
@@ -719,7 +803,9 @@ function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
               인쇄 / PDF
             </button>
           </div>
-          <p className="status-message" role="status">{status}</p>
+          <p className="status-message" role="status">
+            {status}
+          </p>
         </section>
       </div>
     </section>
@@ -768,6 +854,7 @@ function BatchExamPage({ book, documents, onChange, onHome, onBooks }) {
       return {
         studentId: student.id,
         studentName: student.name.trim(),
+        examDate: student.examDate || '',
         bookName: book.name,
         names: student.names,
         direction,
@@ -816,6 +903,7 @@ function BatchExamPage({ book, documents, onChange, onHome, onBooks }) {
           <thead>
             <tr>
               <th>학생 이름</th>
+              <th>시험 날짜</th>
               <th>분류</th>
               <th>문항 수</th>
               <th>삭제</th>
@@ -831,6 +919,16 @@ function BatchExamPage({ book, documents, onChange, onHome, onBooks }) {
                     placeholder={`학생 ${index + 1}`}
                     onChange={(event) =>
                       update(student.id, { name: event.target.value })
+                    }
+                  />
+                </td>
+                <td>
+                  <input
+                    className="student-date-input"
+                    type="date"
+                    value={student.examDate}
+                    onChange={(event) =>
+                      update(student.id, { examDate: event.target.value })
                     }
                   />
                 </td>
@@ -868,11 +966,17 @@ function BatchExamPage({ book, documents, onChange, onHome, onBooks }) {
           </tbody>
         </table>
         <div className="settings-grid">
-          <select value={direction} onChange={(event) => setDirection(event.target.value)}>
+          <select
+            value={direction}
+            onChange={(event) => setDirection(event.target.value)}
+          >
             <option value="en-ko">영어 → 한국어 뜻</option>
             <option value="ko-en">한국어 뜻 → 영어</option>
           </select>
-          <select value={order} onChange={(event) => setOrder(event.target.value)}>
+          <select
+            value={order}
+            onChange={(event) => setOrder(event.target.value)}
+          >
             <option value="random">랜덤</option>
             <option value="sequential">분류 순서대로</option>
           </select>
@@ -886,7 +990,11 @@ function BatchExamPage({ book, documents, onChange, onHome, onBooks }) {
           </label>
         </div>
         <div className="action-row">
-          <button className="button button-primary" type="button" onClick={generate}>
+          <button
+            className="button button-primary"
+            type="button"
+            onClick={generate}
+          >
             전체 시험지 만들기
           </button>
           <button
@@ -1002,7 +1110,8 @@ function SelectionDialog({ entries, student, onClose, onApply }) {
         <footer className="dialog-footer">
           <span>
             {selected.size}개 분류 ·{' '}
-            {getWordCount([...selected], entries).toLocaleString('ko-KR')}개 단어
+            {getWordCount([...selected], entries).toLocaleString('ko-KR')}개
+            단어
           </span>
           <div className="dialog-actions">
             <button
@@ -1029,11 +1138,65 @@ function SelectionDialog({ entries, student, onClose, onApply }) {
 function App() {
   const [view, setView] = useState('home')
   const [bookId, setBookId] = useState('onlyone')
+  const [books, setBooks] = useState(BOOKS)
+  const [loadingBookIds, setLoadingBookIds] = useState([])
   const [documents, setDocuments] = useState({
     onlyone: { single: [], batch: [] },
     neunglyul: { single: [], batch: [] },
+    neunglyulBase: { single: [], batch: [] },
   })
-  const book = BOOKS[bookId]
+
+  useEffect(() => {
+    let ignored = false
+
+    async function loadBooks() {
+      const idsToLoad = (
+        view === 'books' ? Object.keys(BOOKS) : [bookId]
+      ).filter((id) => books[id]?.entries?.length === 0)
+      if (idsToLoad.length === 0) return
+
+      setLoadingBookIds(idsToLoad)
+
+      try {
+        const loadedBooks = await Promise.all(
+          idsToLoad.map(async (id) => {
+            const rawData = await DATA_LOADER[id]()
+            const entries =
+              id === 'onlyone'
+                ? makeOnlyoneEntries(rawData)
+                : makeNeunglyulEntries(rawData)
+            return [id, entries]
+          }),
+        )
+        if (ignored) return
+
+        setBooks((current) => ({
+          ...current,
+          ...Object.fromEntries(
+            loadedBooks.map(([id, entries]) => [
+              id,
+              { ...current[id], entries },
+            ]),
+          ),
+        }))
+      } catch (error) {
+        console.error('단어장 데이터를 불러오지 못했습니다.', error)
+      } finally {
+        if (!ignored) {
+          setLoadingBookIds((current) =>
+            current.filter((id) => !idsToLoad.includes(id)),
+          )
+        }
+      }
+    }
+
+    loadBooks()
+    return () => {
+      ignored = true
+    }
+  }, [bookId, books, view])
+
+  const book = books[bookId]
   const currentDocuments = documents[bookId]?.[view] ?? []
 
   function openBook(id) {
@@ -1063,7 +1226,12 @@ function App() {
       <main className="app-main">
         {view === 'home' && <MenuHome onOpen={() => setView('books')} />}
         {view === 'books' && (
-          <BookSelectPage onHome={() => setView('home')} onSelect={openBook} />
+          <BookSelectPage
+            books={books}
+            loadingBookIds={loadingBookIds}
+            onHome={() => setView('home')}
+            onSelect={openBook}
+          />
         )}
         {view === 'menu' && (
           <BookMenu
