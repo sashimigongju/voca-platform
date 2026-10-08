@@ -14,6 +14,8 @@ const DATA_LOADER = {
       dataModules['./data/neunglyulExtra.json'](),
     ]).then(([words, extra]) => [...words, ...extra]),
   neunglyulBase: () => dataModules['./data/neunglyul.base.json'](),
+  neunglyulLite: () => dataModules['./data/lite.json'](),
+  priorityBeginner: () => dataModules['./data/beginner.json'](),
 }
 
 const QUESTIONS_PER_PAGE = 50
@@ -97,6 +99,40 @@ function makeNeunglyulEntries(words) {
     })
 }
 
+function makeNeunglyulLiteEntries(data) {
+  return [...(data?.days ?? [])]
+    .map((day) => ({
+      name: `Day ${String(day.day).padStart(2, '0')}`,
+      words: (day.words ?? [])
+        .map((item, index) => ({
+          id: `${day.day}-${item.no ?? index + 1}`,
+          no: Number.isFinite(Number(item.no)) ? Number(item.no) : index + 1,
+          word: toText(item.word),
+          meaning: toText(item.meaning),
+        }))
+        .sort((a, b) => a.no - b.no)
+        .filter((word) => word.word && word.meaning),
+    }))
+    .filter((entry) => entry.words.length > 0)
+    .sort((a, b) => getDayNumber(a.name) - getDayNumber(b.name))
+}
+
+function makeBeginnerEntries(data) {
+  return Object.entries(data?.days ?? {})
+    .map(([day, pairs]) => ({
+      name: `Day ${String(day).padStart(2, '0')}`,
+      words: pairs
+        .map(([word, meaning], index) => ({
+          id: `${day}-${index + 1}`,
+          word: toText(word),
+          meaning: toText(meaning),
+        }))
+        .filter((item) => item.word && item.meaning),
+    }))
+    .filter((entry) => entry.words.length > 0)
+    .sort((a, b) => getDayNumber(a.name) - getDayNumber(b.name))
+}
+
 const BOOKS = {
   onlyone: {
     id: 'onlyone',
@@ -111,6 +147,16 @@ const BOOKS = {
   neunglyulBase: {
     id: 'neunglyulBase',
     name: '능률보카 기본(어원편)',
+    entries: [],
+  },
+  neunglyulLite: {
+    id: 'neunglyulLite',
+    name: '능률 라이트',
+    entries: [],
+  },
+  priorityBeginner: {
+    id: 'priorityBeginner',
+    name: '우선순위(비기너)',
     entries: [],
   },
 }
@@ -178,12 +224,7 @@ function normalizeQuestionCount(value, maximum) {
 }
 
 function makeStudent(id, entries, source = null) {
-  const names =
-    source?.names?.length > 0
-      ? getOrderedNames(source.names, entries)
-      : entries[0]
-        ? [entries[0].name]
-        : []
+  const names = source ? getOrderedNames(source.names ?? [], entries) : []
 
   return {
     id,
@@ -193,7 +234,7 @@ function makeStudent(id, entries, source = null) {
     mode: source?.mode ?? 'range',
     anchorName: source?.anchorName ?? names[0] ?? null,
     questionCount: normalizeQuestionCount(
-      source?.questionCount ?? QUESTIONS_PER_PAGE,
+      QUESTIONS_PER_PAGE,
       getWordCount(names, entries),
     ),
   }
@@ -612,9 +653,9 @@ function PrintablePage({ document }) {
 function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
   const entries = book.entries
   const [selection, setSelection] = useState({
-    names: entries[0] ? [entries[0].name] : [],
+    names: [],
     mode: 'range',
-    anchorIndex: entries.length ? 0 : null,
+    anchorIndex: null,
   })
   const [direction, setDirection] = useState('en-ko')
   const [studentName, setStudentName] = useState('')
@@ -632,10 +673,6 @@ function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
         ),
     [entries, selected],
   )
-
-  useEffect(() => {
-    setCount((current) => normalizeQuestionCount(current, words.length))
-  }, [words.length])
 
   function toggle(name, index, checked) {
     onChange([])
@@ -780,7 +817,6 @@ function SingleExamPage({ book, documents, onChange, onHome, onBooks }) {
               <input
                 type="number"
                 min="1"
-                max={words.length || undefined}
                 value={count}
                 onChange={(event) => setCount(event.target.value)}
               />
@@ -1144,6 +1180,8 @@ function App() {
     onlyone: { single: [], batch: [] },
     neunglyul: { single: [], batch: [] },
     neunglyulBase: { single: [], batch: [] },
+    neunglyulLite: { single: [], batch: [] },
+    priorityBeginner: { single: [], batch: [] },
   })
 
   useEffect(() => {
@@ -1164,7 +1202,11 @@ function App() {
             const entries =
               id === 'onlyone'
                 ? makeOnlyoneEntries(rawData)
-                : makeNeunglyulEntries(rawData)
+                : id === 'neunglyulLite'
+                  ? makeNeunglyulLiteEntries(rawData)
+                  : id === 'priorityBeginner'
+                    ? makeBeginnerEntries(rawData)
+                  : makeNeunglyulEntries(rawData)
             return [id, entries]
           }),
         )

@@ -17627,160 +17627,922 @@
     "english": "warning",
     "korean": "경고, 주의"
   },
-
-  {"category":"접사에 따른 혼동어휘 1","no":1,"english":"considerable","korean":"상당한, 많은"},
-  {"category":"접사에 따른 혼동어휘 1","no":2,"english":"considerate","korean":"사려 깊은, 배려하는"},
-  {"category":"접사에 따른 혼동어휘 1","no":3,"english":"successful","korean":"성공적인, 출세한"},
-  {"category":"접사에 따른 혼동어휘 1","no":4,"english":"success","korean":"성공, 출세"},
-  {"category":"접사에 따른 혼동어휘 1","no":5,"english":"successive","korean":"연속[계속]적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":6,"english":"succession","korean":"연속; 계승"},
-  {"category":"접사에 따른 혼동어휘 1","no":7,"english":"competitive","korean":"경쟁력을 갖춘; 경쟁의, 경쟁적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":8,"english":"competent","korean":"유능한, 역량 있는"},
-  {"category":"접사에 따른 혼동어휘 1","no":9,"english":"economic","korean":"경제(학)의"},
-  {"category":"접사에 따른 혼동어휘 1","no":10,"english":"economical","korean":"절약이 되는, 경제적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":11,"english":"imaginary","korean":"상상 속에 존재하는, 가상의"},
-  {"category":"접사에 따른 혼동어휘 1","no":12,"english":"imaginative","korean":"상상력이 풍부한, 창의적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":13,"english":"imaginable","korean":"상상할 수 있는"},
-  {"category":"접사에 따른 혼동어휘 1","no":14,"english":"comparative","korean":"비교의, 비교적인, 상대적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":15,"english":"comparable","korean":"비교될 만한, 비슷한; ~에 필적하는, 비길 만한"},
-  {"category":"접사에 따른 혼동어휘 1","no":16,"english":"effective","korean":"효과적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":17,"english":"efficient","korean":"능률적인, 효율적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":18,"english":"historic","korean":"역사적으로 중요한"},
-  {"category":"접사에 따른 혼동어휘 1","no":19,"english":"historical","korean":"역사의, 역사상의"},
-  {"category":"접사에 따른 혼동어휘 1","no":20,"english":"continuous","korean":"끊임없는, 계속적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":21,"english":"continual","korean":"반복[거듭]되는, 끊임없는"},
-  {"category":"접사에 따른 혼동어휘 1","no":22,"english":"respectful","korean":"존경[존중]하는, 공손한"},
-  {"category":"접사에 따른 혼동어휘 1","no":23,"english":"respectable","korean":"존경할 만한, 훌륭한"},
-  {"category":"접사에 따른 혼동어휘 1","no":24,"english":"respective","korean":"각각의, 저마다의"},
-  {"category":"접사에 따른 혼동어휘 1","no":25,"english":"comprehensible","korean":"이해할 수 있는"},
-  {"category":"접사에 따른 혼동어휘 1","no":26,"english":"comprehensive","korean":"포괄적인, 광범위한"},
-  {"category":"접사에 따른 혼동어휘 1","no":27,"english":"confident","korean":"확신하고 있는; 자신만만한"},
-  {"category":"접사에 따른 혼동어휘 1","no":28,"english":"confidential","korean":"(일급) 비밀의, 기밀의"},
-  {"category":"접사에 따른 혼동어휘 1","no":29,"english":"desirable","korean":"바람직한"},
-  {"category":"접사에 따른 혼동어휘 1","no":30,"english":"desirous","korean":"원하는, 바라는"},
-  {"category":"접사에 따른 혼동어휘 1","no":31,"english":"beneficial","korean":"유익한, 유리한"},
-  {"category":"접사에 따른 혼동어휘 1","no":32,"english":"beneficent","korean":"인정 많은, 선을 베푸는"},
-  {"category":"접사에 따른 혼동어휘 1","no":33,"english":"literary","korean":"문학의, 문예의"},
-  {"category":"접사에 따른 혼동어휘 1","no":34,"english":"literal","korean":"글자 그대로의"},
-  {"category":"접사에 따른 혼동어휘 1","no":35,"english":"literate","korean":"읽고 쓸 줄 아는"},
-  {"category":"접사에 따른 혼동어휘 1","no":36,"english":"sensitive","korean":"섬세한; 민감한, 예민한"},
-  {"category":"접사에 따른 혼동어휘 1","no":37,"english":"sensible","korean":"분별[지각] 있는, 현명한"},
-  {"category":"접사에 따른 혼동어휘 1","no":38,"english":"social","korean":"사회의, 사회적인; 사교상의, 친목의"},
-  {"category":"접사에 따른 혼동어휘 1","no":39,"english":"sociable","korean":"사교적인, 붙임성 있는"},
-  {"category":"접사에 따른 혼동어휘 1","no":40,"english":"memorable","korean":"기억[주목]할 만한"},
-  {"category":"접사에 따른 혼동어휘 1","no":41,"english":"memorial","korean":"기념물, 기념관[비]; 기념[추도]의"},
-  {"category":"접사에 따른 혼동어휘 1","no":42,"english":"practicable","korean":"실행 가능한"},
-  {"category":"접사에 따른 혼동어휘 1","no":43,"english":"practical","korean":"실제적인; 실용적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":44,"english":"intelligent","korean":"(사람, 동물의 머리가) 영리한, 총명한"},
-  {"category":"접사에 따른 혼동어휘 1","no":45,"english":"intellectual","korean":"지적인, 지성의"},
-  {"category":"접사에 따른 혼동어휘 1","no":46,"english":"intelligible","korean":"이해할 수 있는, 명료한"},
-  {"category":"접사에 따른 혼동어휘 1","no":47,"english":"personal","korean":"개인적인, 사적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":48,"english":"personnel","korean":"인사의, 직원의; 전 직원"},
-  {"category":"접사에 따른 혼동어휘 1","no":49,"english":"alive","korean":"살아 있는"},
-  {"category":"접사에 따른 혼동어휘 1","no":50,"english":"live","korean":"살아 있는; 생방송의, 실황 공연의"},
-  {"category":"접사에 따른 혼동어휘 1","no":51,"english":"lively","korean":"활기찬, 생기 있는"},
-  {"category":"접사에 따른 혼동어휘 1","no":52,"english":"valuable","korean":"가치 있는, 소중한"},
-  {"category":"접사에 따른 혼동어휘 1","no":53,"english":"invaluable","korean":"(가치를 매길 수 없을 정도로) 귀중한"},
-  {"category":"접사에 따른 혼동어휘 1","no":54,"english":"subject","korean":"~에 영향받기 쉬운; ~의 지배를 받는; 주제; 과목"},
-  {"category":"접사에 따른 혼동어휘 1","no":55,"english":"subjective","korean":"주관적인"},
-  {"category":"접사에 따른 혼동어휘 1","no":56,"english":"alternate","korean":"번갈아 하는; 격일의, 격주의, 하나 거르는; 대안의"},
-  {"category":"접사에 따른 혼동어휘 1","no":57,"english":"alternative","korean":"대안의, 대체할 수 있는; 대안"},
-  {"category":"접사에 따른 혼동어휘 1","no":58,"english":"cloth","korean":"옷감, 천"},
-  {"category":"접사에 따른 혼동어휘 1","no":59,"english":"clothes","korean":"옷, 의복"},
-  {"category":"접사에 따른 혼동어휘 1","no":60,"english":"clothing","korean":"옷, 의류"},
-  {"category":"접사에 따른 혼동어휘 1","no":61,"english":"wake","korean":"잠에서 깨다; 깨우다"},
-  {"category":"접사에 따른 혼동어휘 1","no":62,"english":"awake","korean":"깨어 있는; 잠에서 깨다; 깨우다"},
-  {"category":"접사에 따른 혼동어휘 1","no":63,"english":"object","korean":"목표; 대상; 반대하다; 물체, 사물"},
-  {"category":"접사에 따른 혼동어휘 1","no":64,"english":"objective","korean":"목표, 목적; 객관적인"},
-
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":1,"english":"high","korean":"높은; 높게"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":2,"english":"highly","korean":"매우"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":3,"english":"close","korean":"(거리상) 가까운; 친밀한; 가까이; 닫다"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":4,"english":"closely","korean":"밀접하게; 엄중히, 면밀히"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":5,"english":"deep","korean":"(거리상) 깊은; (거리상) 깊게, 깊이"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":6,"english":"deeply","korean":"매우; (정도가) 깊게, 깊이"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":7,"english":"near","korean":"가까운; 가까이"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":8,"english":"nearly","korean":"거의; 하마터면"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":9,"english":"hard","korean":"단단한; 어려운; 열심히"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":10,"english":"hardly","korean":"거의 ~ 않다"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":11,"english":"late","korean":"늦은; 늦게"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":12,"english":"lately","korean":"최근에, 요즘"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":13,"english":"bad","korean":"나쁜, 좋지 않은"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":14,"english":"badly","korean":"나쁘게, 서투르게; 몹시, 심하게"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":15,"english":"manner","korean":"방법, 방식; 태도"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":16,"english":"manners","korean":"예절, 예의범절"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":17,"english":"arm","korean":"팔"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":18,"english":"arms","korean":"무기"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":19,"english":"mean","korean":"의미하다; 의도하다; 비열한"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":20,"english":"means","korean":"수단"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":21,"english":"beside","korean":"~옆에"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":22,"english":"besides","korean":"~이외에도; ~을 제외하고; 게다가"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":23,"english":"sometime","korean":"(과거 또는 미래의) 언젠가"},
-  {"category":"능률 ly, s가 붙은 혼동어휘","no":24,"english":"sometimes","korean":"이따금, 종종"},
-
-  {"category":"철자가 비슷한 혼동어휘","no":1,"english":"adapt","korean":"적응시키다; 적응하다; 각색하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":2,"english":"adopt","korean":"입양하다; 채택하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":3,"english":"expand","korean":"커지다, 확장하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":4,"english":"expend","korean":"(돈, 시간, 노력 등을) 쓰다, 들이다"},
-  {"category":"철자가 비슷한 혼동어휘","no":5,"english":"confirm","korean":"(예약, 약속 등을) 확인하다, 확정하다; (사실을) 확인해주다"},
-  {"category":"철자가 비슷한 혼동어휘","no":6,"english":"conform","korean":"순응하다, 따르다"},
-  {"category":"철자가 비슷한 혼동어휘","no":7,"english":"command","korean":"명령(하다); 지휘(하다)"},
-  {"category":"철자가 비슷한 혼동어휘","no":8,"english":"commend","korean":"칭찬하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":9,"english":"acquire","korean":"획득하다; (지식, 기술 등을) 얻다, 습득하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":10,"english":"inquire","korean":"묻다; 조사하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":11,"english":"require","korean":"필요로 하다; (법, 규칙 등이) 요구하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":12,"english":"lie","korean":"눕다, 있다; 거짓말하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":13,"english":"lay","korean":"~을 눕히다, ~을 놓다"},
-  {"category":"철자가 비슷한 혼동어휘","no":14,"english":"wonder","korean":"~이 궁금하다; 놀라움, 경이"},
-  {"category":"철자가 비슷한 혼동어휘","no":15,"english":"wander","korean":"방랑하다, (떠)돌아다니다"},
-  {"category":"철자가 비슷한 혼동어휘","no":16,"english":"access","korean":"접근(성), 이용(성); 접근하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":17,"english":"assess","korean":"평가하다; (가치, 요금 등을) 매기다, 사정하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":18,"english":"compliment","korean":"칭찬(하다)"},
-  {"category":"철자가 비슷한 혼동어휘","no":19,"english":"complement","korean":"보충물; 보완하다, 보충하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":20,"english":"attribute","korean":"~의 탓[덕]으로 돌리다; 성질, 특성"},
-  {"category":"철자가 비슷한 혼동어휘","no":21,"english":"contribute","korean":"기부[기증]하다; ~에 기여하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":22,"english":"distribute","korean":"분배하다, 배급하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":23,"english":"find","korean":"찾다, 발견하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":24,"english":"found","korean":"설립하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":25,"english":"sit","korean":"앉다; ~을 앉히다"},
-  {"category":"철자가 비슷한 혼동어휘","no":26,"english":"seat","korean":"앉히다; 좌석, 자리"},
-  {"category":"철자가 비슷한 혼동어휘","no":27,"english":"aboard","korean":"탑승[승선]하여; (배, 열차, 항공기 등의) 안에서[으로]"},
-  {"category":"철자가 비슷한 혼동어휘","no":28,"english":"abroad","korean":"외국에, 해외로"},
-  {"category":"철자가 비슷한 혼동어휘","no":29,"english":"vacation","korean":"방학"},
-  {"category":"철자가 비슷한 혼동어휘","no":30,"english":"vocation","korean":"천직, 직업; 소명, 사명감"},
-  {"category":"철자가 비슷한 혼동어휘","no":31,"english":"fall","korean":"떨어지다; 넘어지다; (특정한 상태가) 되다"},
-  {"category":"철자가 비슷한 혼동어휘","no":32,"english":"fell","korean":"~을 쓰러뜨리다; 나무를 베다"},
-  {"category":"철자가 비슷한 혼동어휘","no":33,"english":"ethical","korean":"윤리적인, 도덕상의"},
-  {"category":"철자가 비슷한 혼동어휘","no":34,"english":"ethnic","korean":"인종의, 민족의"},
-  {"category":"철자가 비슷한 혼동어휘","no":35,"english":"bold","korean":"대담한, 용감한"},
-  {"category":"철자가 비슷한 혼동어휘","no":36,"english":"bald","korean":"대머리의"},
-  {"category":"철자가 비슷한 혼동어휘","no":37,"english":"jealous","korean":"질투하는"},
-  {"category":"철자가 비슷한 혼동어휘","no":38,"english":"zealous","korean":"열심인, 열성적인"},
-  {"category":"철자가 비슷한 혼동어휘","no":39,"english":"spontaneously","korean":"자발적으로; 즉흥적으로"},
-  {"category":"철자가 비슷한 혼동어휘","no":40,"english":"simultaneously","korean":"동시에, 일제히"},
-  {"category":"철자가 비슷한 혼동어휘","no":41,"english":"affect","korean":"영향을 미치다; ~인 체하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":42,"english":"effect","korean":"효과, 영향; 결과"},
-  {"category":"철자가 비슷한 혼동어휘","no":43,"english":"quite","korean":"아주, 완전히"},
-  {"category":"철자가 비슷한 혼동어휘","no":44,"english":"quiet","korean":"조용한, 고요한"},
-  {"category":"철자가 비슷한 혼동어휘","no":45,"english":"quit","korean":"그만두다, 중지하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":46,"english":"principal","korean":"주요한, 으뜸가는; 교장"},
-  {"category":"철자가 비슷한 혼동어휘","no":47,"english":"principle","korean":"원리, 원칙"},
-  {"category":"철자가 비슷한 혼동어휘","no":48,"english":"lose","korean":"잃다"},
-  {"category":"철자가 비슷한 혼동어휘","no":49,"english":"loose","korean":"느슨한, 풀린"},
-  {"category":"철자가 비슷한 혼동어휘","no":50,"english":"genuine","korean":"진짜의; 진실된"},
-  {"category":"철자가 비슷한 혼동어휘","no":51,"english":"sew","korean":"꿰매다, 바느질하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":52,"english":"sow","korean":"씨를 뿌리다"},
-  {"category":"철자가 비슷한 혼동어휘","no":53,"english":"saw","korean":"톱"},
-  {"category":"철자가 비슷한 혼동어휘","no":54,"english":"daily","korean":"매일의; 일상의"},
-  {"category":"철자가 비슷한 혼동어휘","no":55,"english":"dairy","korean":"우유의, 유제품의"},
-  {"category":"철자가 비슷한 혼동어휘","no":56,"english":"diary","korean":"일기"},
-  {"category":"철자가 비슷한 혼동어휘","no":57,"english":"elect","korean":"선거하다, 선출하다"},
-  {"category":"철자가 비슷한 혼동어휘","no":58,"english":"erect","korean":"똑바로 선; (똑바로) 세우다, (건물 등을) 짓다"},
-  {"category":"철자가 비슷한 혼동어휘","no":59,"english":"conscience","korean":"양심, 도덕심"},
-  {"category":"철자가 비슷한 혼동어휘","no":60,"english":"conscious","korean":"~을 의식하고 있는; 의식이 있는, 깨어 있는; 의식적인"},
-  {"category":"철자가 비슷한 혼동어휘","no":61,"english":"conscientious","korean":"양심적인, 성실한"},
-  {"category":"철자가 비슷한 혼동어휘","no":62,"english":"consciousness","korean":"의식; 알고 있음, 인식"},
-  {"category":"철자가 비슷한 혼동어휘","no":63,"english":"row","korean":"줄, 열; 배를 젓다"},
-  {"category":"철자가 비슷한 혼동어휘","no":64,"english":"raw","korean":"날것의"},
-  {"category":"철자가 비슷한 혼동어휘","no":65,"english":"genuine","korean":"진짜의; 진실된"}
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 1,
+    "english": "considerable",
+    "korean": "상당한, 많은"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 2,
+    "english": "considerate",
+    "korean": "사려 깊은, 배려하는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 3,
+    "english": "successful",
+    "korean": "성공적인, 출세한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 4,
+    "english": "success",
+    "korean": "성공, 출세"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 5,
+    "english": "successive",
+    "korean": "연속[계속]적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 6,
+    "english": "succession",
+    "korean": "연속; 계승"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 7,
+    "english": "competitive",
+    "korean": "경쟁력을 갖춘; 경쟁의, 경쟁적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 8,
+    "english": "competent",
+    "korean": "유능한, 역량 있는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 9,
+    "english": "economic",
+    "korean": "경제(학)의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 10,
+    "english": "economical",
+    "korean": "절약이 되는, 경제적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 11,
+    "english": "imaginary",
+    "korean": "상상 속에 존재하는, 가상의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 12,
+    "english": "imaginative",
+    "korean": "상상력이 풍부한, 창의적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 13,
+    "english": "imaginable",
+    "korean": "상상할 수 있는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 14,
+    "english": "comparative",
+    "korean": "비교의, 비교적인, 상대적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 15,
+    "english": "comparable",
+    "korean": "비교될 만한, 비슷한; ~에 필적하는, 비길 만한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 16,
+    "english": "effective",
+    "korean": "효과적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 17,
+    "english": "efficient",
+    "korean": "능률적인, 효율적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 18,
+    "english": "historic",
+    "korean": "역사적으로 중요한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 19,
+    "english": "historical",
+    "korean": "역사의, 역사상의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 20,
+    "english": "continuous",
+    "korean": "끊임없는, 계속적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 21,
+    "english": "continual",
+    "korean": "반복[거듭]되는, 끊임없는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 22,
+    "english": "respectful",
+    "korean": "존경[존중]하는, 공손한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 23,
+    "english": "respectable",
+    "korean": "존경할 만한, 훌륭한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 24,
+    "english": "respective",
+    "korean": "각각의, 저마다의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 25,
+    "english": "comprehensible",
+    "korean": "이해할 수 있는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 26,
+    "english": "comprehensive",
+    "korean": "포괄적인, 광범위한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 27,
+    "english": "confident",
+    "korean": "확신하고 있는; 자신만만한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 28,
+    "english": "confidential",
+    "korean": "(일급) 비밀의, 기밀의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 29,
+    "english": "desirable",
+    "korean": "바람직한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 30,
+    "english": "desirous",
+    "korean": "원하는, 바라는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 31,
+    "english": "beneficial",
+    "korean": "유익한, 유리한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 32,
+    "english": "beneficent",
+    "korean": "인정 많은, 선을 베푸는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 33,
+    "english": "literary",
+    "korean": "문학의, 문예의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 34,
+    "english": "literal",
+    "korean": "글자 그대로의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 35,
+    "english": "literate",
+    "korean": "읽고 쓸 줄 아는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 36,
+    "english": "sensitive",
+    "korean": "섬세한; 민감한, 예민한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 37,
+    "english": "sensible",
+    "korean": "분별[지각] 있는, 현명한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 38,
+    "english": "social",
+    "korean": "사회의, 사회적인; 사교상의, 친목의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 39,
+    "english": "sociable",
+    "korean": "사교적인, 붙임성 있는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 40,
+    "english": "memorable",
+    "korean": "기억[주목]할 만한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 41,
+    "english": "memorial",
+    "korean": "기념물, 기념관[비]; 기념[추도]의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 42,
+    "english": "practicable",
+    "korean": "실행 가능한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 43,
+    "english": "practical",
+    "korean": "실제적인; 실용적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 44,
+    "english": "intelligent",
+    "korean": "(사람, 동물의 머리가) 영리한, 총명한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 45,
+    "english": "intellectual",
+    "korean": "지적인, 지성의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 46,
+    "english": "intelligible",
+    "korean": "이해할 수 있는, 명료한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 47,
+    "english": "personal",
+    "korean": "개인적인, 사적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 48,
+    "english": "personnel",
+    "korean": "인사의, 직원의; 전 직원"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 49,
+    "english": "alive",
+    "korean": "살아 있는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 50,
+    "english": "live",
+    "korean": "살아 있는; 생방송의, 실황 공연의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 51,
+    "english": "lively",
+    "korean": "활기찬, 생기 있는"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 52,
+    "english": "valuable",
+    "korean": "가치 있는, 소중한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 53,
+    "english": "invaluable",
+    "korean": "(가치를 매길 수 없을 정도로) 귀중한"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 54,
+    "english": "subject",
+    "korean": "~에 영향받기 쉬운; ~의 지배를 받는; 주제; 과목"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 55,
+    "english": "subjective",
+    "korean": "주관적인"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 56,
+    "english": "alternate",
+    "korean": "번갈아 하는; 격일의, 격주의, 하나 거르는; 대안의"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 57,
+    "english": "alternative",
+    "korean": "대안의, 대체할 수 있는; 대안"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 58,
+    "english": "cloth",
+    "korean": "옷감, 천"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 59,
+    "english": "clothes",
+    "korean": "옷, 의복"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 60,
+    "english": "clothing",
+    "korean": "옷, 의류"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 61,
+    "english": "wake",
+    "korean": "잠에서 깨다; 깨우다"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 62,
+    "english": "awake",
+    "korean": "깨어 있는; 잠에서 깨다; 깨우다"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 63,
+    "english": "object",
+    "korean": "목표; 대상; 반대하다; 물체, 사물"
+  },
+  {
+    "category": "접사에 따른 혼동어휘 1",
+    "no": 64,
+    "english": "objective",
+    "korean": "목표, 목적; 객관적인"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 1,
+    "english": "high",
+    "korean": "높은; 높게"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 2,
+    "english": "highly",
+    "korean": "매우"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 3,
+    "english": "close",
+    "korean": "(거리상) 가까운; 친밀한; 가까이; 닫다"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 4,
+    "english": "closely",
+    "korean": "밀접하게; 엄중히, 면밀히"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 5,
+    "english": "deep",
+    "korean": "(거리상) 깊은; (거리상) 깊게, 깊이"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 6,
+    "english": "deeply",
+    "korean": "매우; (정도가) 깊게, 깊이"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 7,
+    "english": "near",
+    "korean": "가까운; 가까이"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 8,
+    "english": "nearly",
+    "korean": "거의; 하마터면"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 9,
+    "english": "hard",
+    "korean": "단단한; 어려운; 열심히"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 10,
+    "english": "hardly",
+    "korean": "거의 ~ 않다"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 11,
+    "english": "late",
+    "korean": "늦은; 늦게"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 12,
+    "english": "lately",
+    "korean": "최근에, 요즘"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 13,
+    "english": "bad",
+    "korean": "나쁜, 좋지 않은"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 14,
+    "english": "badly",
+    "korean": "나쁘게, 서투르게; 몹시, 심하게"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 15,
+    "english": "manner",
+    "korean": "방법, 방식; 태도"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 16,
+    "english": "manners",
+    "korean": "예절, 예의범절"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 17,
+    "english": "arm",
+    "korean": "팔"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 18,
+    "english": "arms",
+    "korean": "무기"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 19,
+    "english": "mean",
+    "korean": "의미하다; 의도하다; 비열한"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 20,
+    "english": "means",
+    "korean": "수단"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 21,
+    "english": "beside",
+    "korean": "~옆에"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 22,
+    "english": "besides",
+    "korean": "~이외에도; ~을 제외하고; 게다가"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 23,
+    "english": "sometime",
+    "korean": "(과거 또는 미래의) 언젠가"
+  },
+  {
+    "category": "능률 ly, s가 붙은 혼동어휘",
+    "no": 24,
+    "english": "sometimes",
+    "korean": "이따금, 종종"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 1,
+    "english": "adapt",
+    "korean": "적응시키다; 적응하다; 각색하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 2,
+    "english": "adopt",
+    "korean": "입양하다; 채택하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 3,
+    "english": "expand",
+    "korean": "커지다, 확장하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 4,
+    "english": "expend",
+    "korean": "(돈, 시간, 노력 등을) 쓰다, 들이다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 5,
+    "english": "confirm",
+    "korean": "(예약, 약속 등을) 확인하다, 확정하다; (사실을) 확인해주다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 6,
+    "english": "conform",
+    "korean": "순응하다, 따르다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 7,
+    "english": "command",
+    "korean": "명령(하다); 지휘(하다)"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 8,
+    "english": "commend",
+    "korean": "칭찬하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 9,
+    "english": "acquire",
+    "korean": "획득하다; (지식, 기술 등을) 얻다, 습득하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 10,
+    "english": "inquire",
+    "korean": "묻다; 조사하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 11,
+    "english": "require",
+    "korean": "필요로 하다; (법, 규칙 등이) 요구하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 12,
+    "english": "lie",
+    "korean": "눕다, 있다; 거짓말하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 13,
+    "english": "lay",
+    "korean": "~을 눕히다, ~을 놓다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 14,
+    "english": "wonder",
+    "korean": "~이 궁금하다; 놀라움, 경이"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 15,
+    "english": "wander",
+    "korean": "방랑하다, (떠)돌아다니다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 16,
+    "english": "access",
+    "korean": "접근(성), 이용(성); 접근하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 17,
+    "english": "assess",
+    "korean": "평가하다; (가치, 요금 등을) 매기다, 사정하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 18,
+    "english": "compliment",
+    "korean": "칭찬(하다)"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 19,
+    "english": "complement",
+    "korean": "보충물; 보완하다, 보충하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 20,
+    "english": "attribute",
+    "korean": "~의 탓[덕]으로 돌리다; 성질, 특성"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 21,
+    "english": "contribute",
+    "korean": "기부[기증]하다; ~에 기여하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 22,
+    "english": "distribute",
+    "korean": "분배하다, 배급하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 23,
+    "english": "find",
+    "korean": "찾다, 발견하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 24,
+    "english": "found",
+    "korean": "설립하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 25,
+    "english": "sit",
+    "korean": "앉다; ~을 앉히다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 26,
+    "english": "seat",
+    "korean": "앉히다; 좌석, 자리"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 27,
+    "english": "aboard",
+    "korean": "탑승[승선]하여; (배, 열차, 항공기 등의) 안에서[으로]"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 28,
+    "english": "abroad",
+    "korean": "외국에, 해외로"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 29,
+    "english": "vacation",
+    "korean": "방학"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 30,
+    "english": "vocation",
+    "korean": "천직, 직업; 소명, 사명감"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 31,
+    "english": "fall",
+    "korean": "떨어지다; 넘어지다; (특정한 상태가) 되다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 32,
+    "english": "fell",
+    "korean": "~을 쓰러뜨리다; 나무를 베다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 33,
+    "english": "ethical",
+    "korean": "윤리적인, 도덕상의"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 34,
+    "english": "ethnic",
+    "korean": "인종의, 민족의"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 35,
+    "english": "bold",
+    "korean": "대담한, 용감한"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 36,
+    "english": "bald",
+    "korean": "대머리의"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 37,
+    "english": "jealous",
+    "korean": "질투하는"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 38,
+    "english": "zealous",
+    "korean": "열심인, 열성적인"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 39,
+    "english": "spontaneously",
+    "korean": "자발적으로; 즉흥적으로"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 40,
+    "english": "simultaneously",
+    "korean": "동시에, 일제히"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 41,
+    "english": "affect",
+    "korean": "영향을 미치다; ~인 체하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 42,
+    "english": "effect",
+    "korean": "효과, 영향; 결과"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 43,
+    "english": "quite",
+    "korean": "아주, 완전히"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 44,
+    "english": "quiet",
+    "korean": "조용한, 고요한"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 45,
+    "english": "quit",
+    "korean": "그만두다, 중지하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 46,
+    "english": "principal",
+    "korean": "주요한, 으뜸가는; 교장"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 47,
+    "english": "principle",
+    "korean": "원리, 원칙"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 48,
+    "english": "lose",
+    "korean": "잃다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 49,
+    "english": "loose",
+    "korean": "느슨한, 풀린"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 50,
+    "english": "genuine",
+    "korean": "진짜의; 진실된"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 51,
+    "english": "sew",
+    "korean": "꿰매다, 바느질하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 52,
+    "english": "sow",
+    "korean": "씨를 뿌리다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 53,
+    "english": "saw",
+    "korean": "톱"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 54,
+    "english": "daily",
+    "korean": "매일의; 일상의"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 55,
+    "english": "dairy",
+    "korean": "우유의, 유제품의"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 56,
+    "english": "diary",
+    "korean": "일기"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 57,
+    "english": "elect",
+    "korean": "선거하다, 선출하다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 58,
+    "english": "erect",
+    "korean": "똑바로 선; (똑바로) 세우다, (건물 등을) 짓다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 59,
+    "english": "conscience",
+    "korean": "양심, 도덕심"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 60,
+    "english": "conscious",
+    "korean": "~을 의식하고 있는; 의식이 있는, 깨어 있는; 의식적인"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 61,
+    "english": "conscientious",
+    "korean": "양심적인, 성실한"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 62,
+    "english": "consciousness",
+    "korean": "의식; 알고 있음, 인식"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 63,
+    "english": "row",
+    "korean": "줄, 열; 배를 젓다"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 64,
+    "english": "raw",
+    "korean": "날것의"
+  },
+  {
+    "category": "철자가 비슷한 혼동어휘",
+    "no": 65,
+    "english": "genuine",
+    "korean": "진짜의; 진실된"
+  }
 ]
