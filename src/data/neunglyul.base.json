@@ -2275,18 +2275,6 @@
   },
   {
     "day": 11,
-    "no": 1,
-    "english": "명사형 접미사",
-    "korean": "명사형 접미사"
-  },
-  {
-    "day": 11,
-    "no": 2,
-    "english": "-er-, -ee-, -or",
-    "korean": "행위자"
-  },
-  {
-    "day": 11,
     "no": 3,
     "english": "interviewer",
     "korean": "면접관, 인터뷰 진행자"
@@ -2344,12 +2332,6 @@
     "no": 12,
     "english": "supervision",
     "korean": "감독, 관리"
-  },
-  {
-    "day": 11,
-    "no": 13,
-    "english": "-ant, -ent",
-    "korean": "행위자"
   },
   {
     "day": 11,
@@ -2437,12 +2419,6 @@
   },
   {
     "day": 11,
-    "no": 28,
-    "english": "-ist",
-    "korean": "행위자"
-  },
-  {
-    "day": 11,
     "no": 29,
     "english": "journalist",
     "korean": "언론인, 기자"
@@ -2479,12 +2455,6 @@
   },
   {
     "day": 11,
-    "no": 35,
-    "english": "-ive",
-    "korean": "행위자"
-  },
-  {
-    "day": 11,
     "no": 36,
     "english": "relative",
     "korean": "친척, 인척; 상대적인"
@@ -2512,12 +2482,6 @@
     "no": 40,
     "english": "representation",
     "korean": "표시, 표현; 대리, 대표"
-  },
-  {
-    "day": 11,
-    "no": 41,
-    "english": "-ary",
-    "korean": "행위자, 지칭"
   },
   {
     "day": 11,
@@ -2554,12 +2518,6 @@
     "no": 47,
     "english": "mission",
     "korean": "전도"
-  },
-  {
-    "day": 11,
-    "no": 48,
-    "english": "-ic(s)",
-    "korean": "학문"
   },
   {
     "day": 11,
@@ -2617,12 +2575,6 @@
   },
   {
     "day": 11,
-    "no": 58,
-    "english": "-ance, -ence",
-    "korean": "행위, 성질, 상태"
-  },
-  {
-    "day": 11,
     "no": 59,
     "english": "appearance",
     "korean": "외모, 외관; 등장, 출현, 출연"
@@ -2644,12 +2596,6 @@
     "no": 62,
     "english": "confer",
     "korean": "의논하다"
-  },
-  {
-    "day": 11,
-    "no": 63,
-    "english": "-ety, -ity",
-    "korean": "행위, 성질, 상태"
   },
   {
     "day": 11,
@@ -2713,12 +2659,6 @@
   },
   {
     "day": 11,
-    "no": 74,
-    "english": "-y, -ry",
-    "korean": "행위, 성질, 상태"
-  },
-  {
-    "day": 11,
     "no": 75,
     "english": "discovery",
     "korean": "발견"
@@ -2767,12 +2707,6 @@
   },
   {
     "day": 11,
-    "no": 83,
-    "english": "-al",
-    "korean": "행위, 성질, 상태"
-  },
-  {
-    "day": 11,
     "no": 84,
     "english": "arrival",
     "korean": "도착"
@@ -2797,12 +2731,6 @@
   },
   {
     "day": 11,
-    "no": 88,
-    "english": "-ure",
-    "korean": "행위, 성질, 상태"
-  },
-  {
-    "day": 11,
     "no": 89,
     "english": "creature",
     "korean": "생물; 창조물, 인간"
@@ -2824,12 +2752,6 @@
     "no": 92,
     "english": "fail",
     "korean": "실패하다"
-  },
-  {
-    "day": 11,
-    "no": 93,
-    "english": "-ment",
-    "korean": "행위, 성질, 상태, 결과물"
   },
   {
     "day": 11,
@@ -2872,12 +2794,6 @@
     "no": 100,
     "english": "documentation",
     "korean": "기록, 문서화"
-  },
-  {
-    "day": 11,
-    "no": 101,
-    "english": "-ion, -(a)tion",
-    "korean": "행위, 성질, 상태"
   },
   {
     "day": 11,
@@ -2941,12 +2857,6 @@
   },
   {
     "day": 11,
-    "no": 112,
-    "english": "-th, -t",
-    "korean": "행위, 성질, 상태"
-  },
-  {
-    "day": 11,
     "no": 113,
     "english": "wealth",
     "korean": "부, 재산; 풍부함"
@@ -2989,12 +2899,6 @@
   },
   {
     "day": 11,
-    "no": 120,
-    "english": "-ness",
-    "korean": "행위, 성질, 상태"
-  },
-  {
-    "day": 11,
     "no": 121,
     "english": "witness",
     "korean": "목격자, 입회인; (법정에서) 증인; 목격하다; 증언하다"
@@ -3010,12 +2914,6 @@
     "no": 123,
     "english": "fit",
     "korean": "건강한; 적절한; ~에 알맞다[어울리다]; 맞게 하다"
-  },
-  {
-    "day": 11,
-    "no": 124,
-    "english": "-(a)cy",
-    "korean": "행위, 성질, 상태"
   },
   {
     "day": 11,
@@ -3043,12 +2941,6 @@
   },
   {
     "day": 11,
-    "no": 129,
-    "english": "-ship",
-    "korean": "자격, 특성"
-  },
-  {
-    "day": 11,
     "no": 130,
     "english": "citizenship",
     "korean": "시민권, 시민으로서의 신분"
@@ -3073,12 +2965,6 @@
   },
   {
     "day": 11,
-    "no": 134,
-    "english": "-hood",
-    "korean": "시대, 관계"
-  },
-  {
-    "day": 11,
     "no": 135,
     "english": "childhood",
     "korean": "유년기"
@@ -3100,12 +2986,6 @@
     "no": 138,
     "english": "neighbor",
     "korean": "이웃"
-  },
-  {
-    "day": 11,
-    "no": 139,
-    "english": "-ism",
-    "korean": "주의, 특성"
   },
   {
     "day": 11,
@@ -3181,12 +3061,6 @@
   },
   {
     "day": 11,
-    "no": 152,
-    "english": "-(l)et, -ette",
-    "korean": "작은 것을 가리키는 말"
-  },
-  {
-    "day": 11,
     "no": 153,
     "english": "target",
     "korean": "목표, 대상; 목표로 삼다, 대상으로 하다"
@@ -3223,12 +3097,6 @@
   },
   {
     "day": 11,
-    "no": 159,
-    "english": "-le, -el",
-    "korean": "작은 것을 가리키는 말"
-  },
-  {
-    "day": 11,
     "no": 160,
     "english": "angle",
     "korean": "각도, 각; 관점; 노리다"
@@ -3253,18 +3121,6 @@
   },
   {
     "day": 12,
-    "no": 1,
-    "english": "형용사형 접미사 1",
-    "korean": "형용사형 접미사 1"
-  },
-  {
-    "day": 12,
-    "no": 2,
-    "english": "-ish, -like",
-    "korean": "…한"
-  },
-  {
-    "day": 12,
     "no": 3,
     "english": "childish",
     "korean": "유치한"
@@ -3283,12 +3139,6 @@
   },
   {
     "day": 12,
-    "no": 6,
-    "english": "-able",
-    "korean": "…할 만한"
-  },
-  {
-    "day": 12,
     "no": 7,
     "english": "comparable",
     "korean": "비교될 만한, 비슷한"
@@ -3298,12 +3148,6 @@
     "no": 8,
     "english": "compare",
     "korean": "비교하다"
-  },
-  {
-    "day": 12,
-    "no": 9,
-    "english": "-ative",
-    "korean": "…의, …인"
   },
   {
     "day": 12,
@@ -3337,12 +3181,6 @@
   },
   {
     "day": 12,
-    "no": 15,
-    "english": "-ate",
-    "korean": "…하는"
-  },
-  {
-    "day": 12,
     "no": 16,
     "english": "considerate",
     "korean": "사려 깊은, 배려하는"
@@ -3352,12 +3190,6 @@
     "no": 17,
     "english": "consideration",
     "korean": "숙고, 고려; 참작, 배려"
-  },
-  {
-    "day": 12,
-    "no": 18,
-    "english": "-al, -ous",
-    "korean": "의미 추가 없이 형용사로 바꿈"
   },
   {
     "day": 12,
@@ -3391,12 +3223,6 @@
   },
   {
     "day": 12,
-    "no": 24,
-    "english": "-ic",
-    "korean": "…의"
-  },
-  {
-    "day": 12,
     "no": 25,
     "english": "economic",
     "korean": "경제(학)의"
@@ -3406,12 +3232,6 @@
     "no": 26,
     "english": "economy",
     "korean": "경제"
-  },
-  {
-    "day": 12,
-    "no": 27,
-    "english": "-ical",
-    "korean": "…인"
   },
   {
     "day": 12,
@@ -3439,12 +3259,6 @@
   },
   {
     "day": 12,
-    "no": 32,
-    "english": "-ual",
-    "korean": "…인, …의"
-  },
-  {
-    "day": 12,
     "no": 33,
     "english": "intellectual",
     "korean": "지적인, 지성의"
@@ -3454,12 +3268,6 @@
     "no": 34,
     "english": "intellect",
     "korean": "지성"
-  },
-  {
-    "day": 12,
-    "no": 35,
-    "english": "-ent",
-    "korean": "…한"
   },
   {
     "day": 12,
@@ -3487,21 +3295,9 @@
   },
   {
     "day": 12,
-    "no": 40,
-    "english": "-ful",
-    "korean": "‘가득 참’의 의미를 내포한다고 생각"
-  },
-  {
-    "day": 12,
     "no": 41,
     "english": "respectful",
     "korean": "존경[존중]하는, 공손한"
-  },
-  {
-    "day": 12,
-    "no": 42,
-    "english": "-ible, -tive",
-    "korean": "…한"
   },
   {
     "day": 12,
@@ -3565,12 +3361,6 @@
   },
   {
     "day": 12,
-    "no": 53,
-    "english": "-ive",
-    "korean": "…한, …인"
-  },
-  {
-    "day": 12,
     "no": 54,
     "english": "successive",
     "korean": "연속[계속]적인"
@@ -3592,12 +3382,6 @@
     "no": 57,
     "english": "literally",
     "korean": "글자 그대로"
-  },
-  {
-    "day": 12,
-    "no": 58,
-    "english": "-ary",
-    "korean": "…의"
   },
   {
     "day": 12,
@@ -3679,18 +3463,6 @@
   },
   {
     "day": 12,
-    "no": 72,
-    "english": "형용사형 접미사 2",
-    "korean": "형용사형 접미사 2"
-  },
-  {
-    "day": 12,
-    "no": 73,
-    "english": "-able, -ible",
-    "korean": "가능성, 능력, 적합성"
-  },
-  {
-    "day": 12,
     "no": 74,
     "english": "favorable",
     "korean": "호의적인, 찬성하는"
@@ -3730,12 +3502,6 @@
     "no": 80,
     "english": "visual",
     "korean": "시각[시력]의; 눈으로 보는"
-  },
-  {
-    "day": 12,
-    "no": 81,
-    "english": "-ful",
-    "korean": "풍부"
   },
   {
     "day": 12,
@@ -3784,12 +3550,6 @@
     "no": 89,
     "english": "force",
     "korean": "힘"
-  },
-  {
-    "day": 12,
-    "no": 90,
-    "english": "-ic, -ical",
-    "korean": "성질, 성향"
   },
   {
     "day": 12,
@@ -3847,12 +3607,6 @@
   },
   {
     "day": 12,
-    "no": 100,
-    "english": "-ar(y), -ory",
-    "korean": "성질, 성향"
-  },
-  {
-    "day": 12,
     "no": 101,
     "english": "familiar",
     "korean": "친근한"
@@ -3889,18 +3643,6 @@
   },
   {
     "day": 13,
-    "no": 1,
-    "english": "형용사형 접미사 2",
-    "korean": "형용사형 접미사 2"
-  },
-  {
-    "day": 13,
-    "no": 2,
-    "english": "-ly",
-    "korean": "성질, 성향"
-  },
-  {
-    "day": 13,
     "no": 3,
     "english": "costly",
     "korean": "값비싼; 손실[희생]이 큰"
@@ -3922,12 +3664,6 @@
     "no": 6,
     "english": "time",
     "korean": "시간"
-  },
-  {
-    "day": 13,
-    "no": 7,
-    "english": "-ous",
-    "korean": "성질, 성향"
   },
   {
     "day": 13,
@@ -3961,12 +3697,6 @@
   },
   {
     "day": 13,
-    "no": 13,
-    "english": "-ate",
-    "korean": "성질, 성향"
-  },
-  {
-    "day": 13,
     "no": 14,
     "english": "fortunate",
     "korean": "운이 좋은"
@@ -3988,12 +3718,6 @@
     "no": 17,
     "english": "intimacy",
     "korean": "친밀함"
-  },
-  {
-    "day": 13,
-    "no": 18,
-    "english": "-ant, -ent",
-    "korean": "성질, 성향"
   },
   {
     "day": 13,
@@ -4057,12 +3781,6 @@
   },
   {
     "day": 13,
-    "no": 29,
-    "english": "-ish",
-    "korean": "성질, 성향"
-  },
-  {
-    "day": 13,
     "no": 30,
     "english": "foolish",
     "korean": "어리석은"
@@ -4096,12 +3814,6 @@
     "no": 35,
     "english": "self",
     "korean": "자신"
-  },
-  {
-    "day": 13,
-    "no": 36,
-    "english": "-al, -ial, -ual",
-    "korean": "성질, 성향"
   },
   {
     "day": 13,
@@ -4144,12 +3856,6 @@
     "no": 43,
     "english": "verbal",
     "korean": "언어의, 말로 된"
-  },
-  {
-    "day": 13,
-    "no": 44,
-    "english": "verb",
-    "korean": "동사"
   },
   {
     "day": 13,
@@ -4219,12 +3925,6 @@
   },
   {
     "day": 13,
-    "no": 56,
-    "english": "-ive, -ative",
-    "korean": "성질, 성향"
-  },
-  {
-    "day": 13,
     "no": 57,
     "english": "active",
     "korean": "활동적인; 적극적인"
@@ -4267,12 +3967,6 @@
   },
   {
     "day": 13,
-    "no": 64,
-    "english": "-y",
-    "korean": "성질, 성향"
-  },
-  {
-    "day": 13,
     "no": 65,
     "english": "hasty",
     "korean": "성급한, 서두르는"
@@ -4303,12 +3997,6 @@
   },
   {
     "day": 13,
-    "no": 70,
-    "english": "-less",
-    "korean": "결핍, 결여"
-  },
-  {
-    "day": 13,
     "no": 71,
     "english": "countless",
     "korean": "셀 수 없는, 무수히 많은"
@@ -4330,18 +4018,6 @@
     "no": 74,
     "english": "end",
     "korean": "끝내다"
-  },
-  {
-    "day": 13,
-    "no": 75,
-    "english": "동사형 접미사",
-    "korean": "동사형 접미사"
-  },
-  {
-    "day": 13,
-    "no": 76,
-    "english": "-ize",
-    "korean": "~하게 만들다"
   },
   {
     "day": 13,
@@ -4384,12 +4060,6 @@
     "no": 83,
     "english": "civilization",
     "korean": "문명 (사회)"
-  },
-  {
-    "day": 13,
-    "no": 84,
-    "english": "-ate",
-    "korean": "~하게 만들다"
   },
   {
     "day": 13,
@@ -4477,12 +4147,6 @@
   },
   {
     "day": 13,
-    "no": 99,
-    "english": "-(i)fy",
-    "korean": "~하게 만들다"
-  },
-  {
-    "day": 13,
     "no": 100,
     "english": "justify",
     "korean": "정당화하다, 옳다고 하다"
@@ -4531,12 +4195,6 @@
   },
   {
     "day": 13,
-    "no": 108,
-    "english": "-en",
-    "korean": "~하게 만들다"
-  },
-  {
-    "day": 13,
     "no": 109,
     "english": "strengthen",
     "korean": "강화하다; 강화되다"
@@ -4558,12 +4216,6 @@
     "no": 112,
     "english": "fright",
     "korean": "공포"
-  },
-  {
-    "day": 13,
-    "no": 113,
-    "english": "-le",
-    "korean": "~하다"
   },
   {
     "day": 13,
@@ -4597,18 +4249,6 @@
   },
   {
     "day": 13,
-    "no": 119,
-    "english": "부사형 접미사",
-    "korean": "부사형 접미사"
-  },
-  {
-    "day": 13,
-    "no": 120,
-    "english": "-ly",
-    "korean": "방식"
-  },
-  {
-    "day": 13,
     "no": 121,
     "english": "extremely",
     "korean": "극도로, 극히"
@@ -4633,12 +4273,6 @@
   },
   {
     "day": 13,
-    "no": 125,
-    "english": "-ward",
-    "korean": "방향"
-  },
-  {
-    "day": 13,
     "no": 126,
     "english": "homeward",
     "korean": "집 쪽으로, 집으로 향하는"
@@ -4660,12 +4294,6 @@
     "no": 129,
     "english": "up",
     "korean": "위로"
-  },
-  {
-    "day": 13,
-    "no": 130,
-    "english": "-way, -wise",
-    "korean": "방법"
   },
   {
     "day": 13,
