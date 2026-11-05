@@ -254,7 +254,7 @@ h2 {
 /* 홈 메뉴 */
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 13px;
 }
 
@@ -873,6 +873,13 @@ h2 {
   width: 100%;
 }
 
+.all-books-description {
+  margin: -10px 0 16px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
 .batch-toolbar {
   display: flex;
   align-items: center;
@@ -897,6 +904,34 @@ h2 {
   min-width: 740px;
   border-collapse: collapse;
   table-layout: fixed;
+}
+
+.all-books-student-table {
+  min-width: 940px;
+}
+
+.all-books-student-table th:nth-child(1) {
+  width: 17%;
+}
+
+.all-books-student-table th:nth-child(2) {
+  width: 19%;
+}
+
+.all-books-student-table th:nth-child(3) {
+  width: 16%;
+}
+
+.all-books-student-table th:nth-child(4) {
+  width: 28%;
+}
+
+.all-books-student-table th:nth-child(5) {
+  width: 12%;
+}
+
+.all-books-student-table th:nth-child(6) {
+  width: 8%;
 }
 
 .student-table th {
@@ -943,7 +978,8 @@ h2 {
 
 .student-name-input,
 .student-date-input,
-.question-count-input {
+.question-count-input,
+.student-book-select {
   width: 100%;
   height: 34px;
   padding: 0 8px;
@@ -952,6 +988,10 @@ h2 {
   color: var(--ink);
   background: #ffffff;
   font-size: 10px;
+}
+
+.student-book-select {
+  padding: 0 5px;
 }
 
 .question-count-input {

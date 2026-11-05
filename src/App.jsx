@@ -240,6 +240,17 @@ function makeStudent(id, entries, source = null) {
   }
 }
 
+function makeAllBookStudent(id, source = null) {
+  return {
+    id,
+    name: '',
+    examDate: source?.examDate ?? '',
+    bookId: source?.bookId ?? 'onlyone',
+    names: source?.names ?? [],
+    questionCount: String(QUESTIONS_PER_PAGE),
+  }
+}
+
 function shuffle(items) {
   const result = [...items]
   for (let index = result.length - 1; index > 0; index -= 1) {
@@ -287,7 +298,7 @@ function makeDocuments(groups, entries, includeAnswers) {
         questions,
         pageIndex,
         pageCount: pages.length,
-        summary: getSummary(group.names, entries),
+        summary: group.summary ?? getSummary(group.names, entries),
       }
       exams.push({ ...document, type: 'exam' })
       if (includeAnswers) answers.push({ ...document, type: 'answer' })
@@ -358,7 +369,7 @@ function SiteHeader({ title, onHome, onBack }) {
   )
 }
 
-function MenuHome({ onOpen }) {
+function MenuHome({ onOpen, onOpenAllBooks }) {
   return (
     <section className="home-screen">
       <header className="screen-heading">
@@ -377,6 +388,21 @@ function MenuHome({ onOpen }) {
           <span className="menu-card-title">단어 시험지</span>
           <span className="menu-card-bottom">
             <span>온리원보카 · 능률 VOCA</span>
+            <span className="arrow">→</span>
+          </span>
+        </button>
+        <button
+          className="menu-card"
+          type="button"
+          onClick={onOpenAllBooks}
+        >
+          <span className="menu-card-top">
+            <span className="menu-icon">+</span>
+            <span className="status-tag status-tag-active">사용 가능</span>
+          </span>
+          <span className="menu-card-title">전체 단어장 출력</span>
+          <span className="menu-card-bottom">
+            <span>단어장 구분 없이 여러 명 시험지 출력</span>
             <span className="arrow">→</span>
           </span>
         </button>
@@ -1046,7 +1072,309 @@ function BatchExamPage({ book, documents, onChange, onHome, onBooks }) {
       </section>
       {active && (
         <SelectionDialog
+          key={active.id}
           entries={entries}
+          student={active}
+          onClose={() => setActiveId(null)}
+          onApply={(names) => {
+            update(active.id, { names })
+            setActiveId(null)
+          }}
+        />
+      )}
+    </section>
+  )
+}
+
+function AllBooksBatchPage({
+  books,
+  loadingBookIds,
+  documents,
+  onChange,
+  onHome,
+}) {
+  const [students, setStudents] = useState(() => [
+    makeAllBookStudent(1),
+    makeAllBookStudent(2),
+  ])
+  const [nextId, setNextId] = useState(3)
+  const [activeId, setActiveId] = useState(null)
+  const [direction, setDirection] = useState('en-ko')
+  const [order, setOrder] = useState('random')
+  const [includeAnswers, setIncludeAnswers] = useState(true)
+  const [status, setStatus] = useState('')
+  const active = students.find((student) => student.id === activeId)
+  const activeBook = active ? books[active.bookId] : null
+
+  function update(id, patch) {
+    setStudents((current) =>
+      current.map((student) =>
+        student.id === id ? { ...student, ...patch } : student,
+      ),
+    )
+    onChange([])
+  }
+
+  function changeBook(student, bookId) {
+    update(student.id, {
+      bookId,
+      names: [],
+      questionCount: String(QUESTIONS_PER_PAGE),
+    })
+  }
+
+  function generate() {
+    onChange([])
+    if (students.some((student) => !student.name.trim())) {
+      setStatus('학생 이름을 모두 입력하세요.')
+      return
+    }
+    if (students.some((student) => student.names.length === 0)) {
+      setStatus('모든 학생의 단어장과 분류를 선택하세요.')
+      return
+    }
+    if (students.some((student) => loadingBookIds.includes(student.bookId))) {
+      setStatus('단어장 데이터를 불러오는 중입니다.')
+      return
+    }
+
+    const groups = students.map((student) => {
+      const book = books[student.bookId]
+      const selected = new Set(student.names)
+      const words = book.entries
+        .filter((entry) => selected.has(entry.name))
+        .flatMap((entry) =>
+          entry.words.map((word) => ({ ...word, dayName: entry.name })),
+        )
+      return {
+        studentId: student.id,
+        studentName: student.name.trim(),
+        examDate: student.examDate || '',
+        bookName: book.name,
+        names: student.names,
+        summary: getSummary(student.names, book.entries),
+        direction,
+        order,
+        questions: makeQuestions(
+          words,
+          student.questionCount,
+          direction,
+          order,
+        ),
+      }
+    })
+    onChange(makeDocuments(groups, [], includeAnswers))
+    setStatus(`${students.length}명 시험지 생성 완료`)
+  }
+
+  return (
+    <section className="view-section">
+      <Breadcrumbs
+        items={[
+          { label: '메뉴', onClick: onHome },
+          { label: '전체 단어장 출력' },
+        ]}
+      />
+      <header className="page-heading">
+        <p className="eyebrow">VOCAB DESK</p>
+        <h1>전체 단어장 출력</h1>
+      </header>
+      <p className="all-books-description">
+        학생마다 단어장을 다르게 선택해 시험지를 한 번에 만들고 인쇄할 수 있습니다.
+      </p>
+      <section className="card batch-card">
+        <div className="batch-toolbar">
+          <strong>학생별 시험지 설정</strong>
+          <button
+            className="mini-button"
+            type="button"
+            onClick={() => {
+              setStudents((current) => [
+                ...current,
+                makeAllBookStudent(nextId, current.at(-1)),
+              ])
+              setNextId((current) => current + 1)
+              onChange([])
+            }}
+          >
+            ＋ 학생 추가
+          </button>
+        </div>
+        <div className="student-table-wrap">
+          <table className="student-table all-books-student-table">
+            <thead>
+              <tr>
+                <th>학생 이름</th>
+                <th>단어장</th>
+                <th>시험 날짜</th>
+                <th>분류</th>
+                <th>문항 수</th>
+                <th>삭제</th>
+              </tr>
+            </thead>
+            <tbody>
+              {students.map((student, index) => {
+                const book = books[student.bookId]
+                const isLoading = loadingBookIds.includes(student.bookId)
+                return (
+                  <tr key={student.id}>
+                    <td>
+                      <input
+                        className="student-name-input"
+                        value={student.name}
+                        placeholder={`학생 ${index + 1}`}
+                        onChange={(event) =>
+                          update(student.id, { name: event.target.value })
+                        }
+                      />
+                    </td>
+                    <td>
+                      <select
+                        className="student-book-select"
+                        value={student.bookId}
+                        onChange={(event) =>
+                          changeBook(student, event.target.value)
+                        }
+                      >
+                        {Object.values(BOOKS).map((option) => (
+                          <option key={option.id} value={option.id}>
+                            {option.name}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    <td>
+                      <input
+                        className="student-date-input"
+                        type="date"
+                        value={student.examDate}
+                        onChange={(event) =>
+                          update(student.id, { examDate: event.target.value })
+                        }
+                      />
+                    </td>
+                    <td>
+                      <div className="student-day-cell">
+                        <button
+                          className="day-picker-button"
+                          type="button"
+                          disabled={isLoading || !book.entries.length}
+                          onClick={() => setActiveId(student.id)}
+                        >
+                          <span>
+                            {isLoading
+                              ? '단어장 불러오는 중...'
+                              : getSummary(student.names, book.entries)}
+                          </span>
+                          <span aria-hidden="true">⌄</span>
+                        </button>
+                        <span className="student-day-meta">
+                          {getWordCount(student.names, book.entries).toLocaleString(
+                            'ko-KR',
+                          )}
+                          개 단어
+                        </span>
+                      </div>
+                    </td>
+                    <td>
+                      <input
+                        className="question-count-input"
+                        type="number"
+                        min="1"
+                        value={student.questionCount}
+                        onChange={(event) =>
+                          update(student.id, {
+                            questionCount: event.target.value,
+                          })
+                        }
+                      />
+                    </td>
+                    <td className="remove-cell">
+                      <button
+                        className="remove-button"
+                        type="button"
+                        aria-label={`${student.name || `학생 ${index + 1}`} 삭제`}
+                        disabled={students.length <= 1}
+                        onClick={() => {
+                          setStudents((current) =>
+                            current.filter((item) => item.id !== student.id),
+                          )
+                          onChange([])
+                        }}
+                      >
+                        ×
+                      </button>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+        <div className="settings-grid batch-settings-grid">
+          <label className="field">
+            출제 방향
+            <select
+              value={direction}
+              onChange={(event) => {
+                setDirection(event.target.value)
+                onChange([])
+              }}
+            >
+              <option value="en-ko">영어 → 한국어 뜻</option>
+              <option value="ko-en">한국어 뜻 → 영어</option>
+            </select>
+          </label>
+          <label className="field">
+            출제 순서
+            <select
+              value={order}
+              onChange={(event) => {
+                setOrder(event.target.value)
+                onChange([])
+              }}
+            >
+              <option value="random">랜덤</option>
+              <option value="sequential">분류 순서대로</option>
+            </select>
+          </label>
+          <label className="answer-toggle">
+            <input
+              type="checkbox"
+              checked={includeAnswers}
+              onChange={(event) => {
+                setIncludeAnswers(event.target.checked)
+                onChange([])
+              }}
+            />
+            정답지 포함
+          </label>
+        </div>
+        <div className="action-row">
+          <button
+            className="button button-primary"
+            type="button"
+            onClick={generate}
+          >
+            전체 시험지 만들기
+          </button>
+          <button
+            className="button button-secondary"
+            type="button"
+            disabled={!documents.length}
+            onClick={() => window.print()}
+          >
+            한 번에 인쇄 / PDF
+          </button>
+        </div>
+        <p className="status-message" role="status">
+          {status}
+        </p>
+      </section>
+      {active && activeBook && (
+        <SelectionDialog
+          key={`${active.id}-${active.bookId}`}
+          entries={activeBook.entries}
           student={active}
           onClose={() => setActiveId(null)}
           onApply={(names) => {
@@ -1177,6 +1505,7 @@ function App() {
   const [books, setBooks] = useState(BOOKS)
   const [loadingBookIds, setLoadingBookIds] = useState([])
   const [documents, setDocuments] = useState({
+    allBatch: [],
     onlyone: { single: [], batch: [] },
     neunglyul: { single: [], batch: [] },
     neunglyulBase: { single: [], batch: [] },
@@ -1189,7 +1518,9 @@ function App() {
 
     async function loadBooks() {
       const idsToLoad = (
-        view === 'books' ? Object.keys(BOOKS) : [bookId]
+        view === 'books' || view === 'allBatch'
+          ? Object.keys(BOOKS)
+          : [bookId]
       ).filter((id) => books[id]?.entries?.length === 0)
       if (idsToLoad.length === 0) return
 
@@ -1239,7 +1570,8 @@ function App() {
   }, [bookId, books, view])
 
   const book = books[bookId]
-  const currentDocuments = documents[bookId]?.[view] ?? []
+  const currentDocuments =
+    view === 'allBatch' ? documents.allBatch : documents[bookId]?.[view] ?? []
 
   function openBook(id) {
     setBookId(id)
@@ -1250,6 +1582,7 @@ function App() {
     if (view === 'books') setView('home')
     else if (view === 'menu') setView('books')
     else if (view === 'single' || view === 'batch') setView('menu')
+    else if (view === 'allBatch') setView('home')
   }
 
   return (
@@ -1260,13 +1593,20 @@ function App() {
             ? '메뉴'
             : view === 'books'
               ? '단어 시험지'
+              : view === 'allBatch'
+                ? '전체 단어장 출력'
               : book.name
         }
         onHome={() => setView('home')}
         onBack={view === 'home' ? null : back}
       />
       <main className="app-main">
-        {view === 'home' && <MenuHome onOpen={() => setView('books')} />}
+        {view === 'home' && (
+          <MenuHome
+            onOpen={() => setView('books')}
+            onOpenAllBooks={() => setView('allBatch')}
+          />
+        )}
         {view === 'books' && (
           <BookSelectPage
             books={books}
@@ -1311,6 +1651,17 @@ function App() {
             }
             onHome={() => setView('home')}
             onBooks={openBook}
+          />
+        )}
+        {view === 'allBatch' && (
+          <AllBooksBatchPage
+            books={books}
+            loadingBookIds={loadingBookIds}
+            documents={documents.allBatch}
+            onChange={(next) =>
+              setDocuments((current) => ({ ...current, allBatch: next }))
+            }
+            onHome={() => setView('home')}
           />
         )}
       </main>
