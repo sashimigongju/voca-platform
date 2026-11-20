@@ -886,44 +886,6 @@ function BatchExamPage({ book, documents, onChange, onHome, onBooks }) {
   const [order, setOrder] = useState('random')
   const [includeAnswers, setIncludeAnswers] = useState(true)
   const [status, setStatus] = useState('')
-  const consumedImport = useRef(null)
-  // Import is transient and must match real word-book categories before enabling print.
-  useEffect(() => {
-    if (!importedBatch || consumedImport.current === importedBatch.nonce) return
-    if (importedBatch.students.some((item) => !books[item.bookId]?.entries?.length)) return
-    const unknown = []
-    const mapped = importedBatch.students.map((item, index) => {
-      const entries = books[item.bookId].entries
-      const normalize = (value) => String(value || '').replace(/\s+/g, '').toLowerCase().replace(/^day0*(\d+)$/i, (_, n) => 'day' + Number(n))
-      const names = item.names.map((name) => {
-        const aliases = item.bookId === 'neunglyulBase' ? {
-          '접사에따른혼동어휘': '접사에따른혼동어휘1',
-          'ly,s가붙은혼동어휘': '능률ly,s가붙은혼동어휘',
-        } : {}
-        const wanted = aliases[normalize(name)] || normalize(name)
-        const entry = entries.find((candidate) => normalize(candidate.name) === wanted)
-        if (!entry) unknown.push(item.name + ' · ' + name)
-        return entry?.name
-      }).filter(Boolean)
-      return {
-        ...makeAllBookStudent(index + 1),
-        name: item.name,
-        examDate: item.examDate,
-        bookId: item.bookId,
-        names: [...new Set(names)],
-        questionCount: String(QUESTIONS_PER_PAGE),
-      }
-    })
-    consumedImport.current = importedBatch.nonce
-    if (unknown.length) {
-      setStatus('단어장에 없는 범위가 있어 자동 가져오기를 중단했습니다: ' + unknown.join(', '))
-      return
-    }
-    setStudents(mapped)
-    setNextId(mapped.length + 1)
-    onChange([])
-    setStatus(mapped.length + '명(교재별)의 학습 범위를 가져왔습니다. 내용을 확인하고 전체 시험지를 만들어 주세요.')
-  }, [importedBatch, books, onChange])
   const active = students.find((student) => student.id === activeId)
 
   function update(id, patch) {
@@ -1142,6 +1104,67 @@ function AllBooksBatchPage({
   const [order, setOrder] = useState('random')
   const [includeAnswers, setIncludeAnswers] = useState(true)
   const [status, setStatus] = useState('')
+  const consumedImport = useRef(null)
+  // Import into the existing "all books" screen after its five data files are loaded.
+  // Imported days are resolved to real category entries; invalid ranges never print.
+  useEffect(() => {
+    if (!importedBatch || consumedImport.current === importedBatch.nonce) return
+    if (importedBatch.students.some(item => !books[item.bookId]?.entries?.length)) return
+    const normalize = (value) => String(value || '')
+      .replace(/\s+/g, '').toLowerCase()
+      .replace(/^day0*(\d+)$/i, (_, n) => 'day' + Number(n))
+    const aliases = {
+      neunglyulBase: {
+        '접사에따른혼동어휘': '접사에따른혼동어휘1',
+        'ly,s가붙은혼동어휘': '능률ly,s가붙은혼동어휘',
+      },
+    }
+    const unknown = []
+    const mapped = importedBatch.students.map((item, index) => {
+      const book = books[item.bookId]
+      const entries = book.entries
+      const names = item.names.map(name => {
+        const wanted = aliases[item.bookId]?.[normalize(name)] || normalize(name)
+        const matched = entries.find(entry => normalize(entry.name) === wanted)
+        if (!matched) unknown.push(item.name + ' · ' + book.name + ' · ' + name)
+        return matched?.name
+      }).filter(Boolean)
+      return {
+        ...makeAllBookStudent(index + 1),
+        name: item.name,
+        examDate: item.examDate,
+        bookId: item.bookId,
+        names: getOrderedNames([...new Set(names)], entries),
+        questionCount: String(QUESTIONS_PER_PAGE),
+      }
+    })
+    consumedImport.current = importedBatch.nonce
+    if (unknown.length) {
+      setStatus('단어장에 없는 범위가 있어 가져오기를 중단했습니다: ' + unknown.join(', '))
+      return
+    }
+    setStudents(mapped)
+    setNextId(mapped.length + 1)
+    const groups = mapped.map(student => {
+      const book = books[student.bookId]
+      const selected = new Set(student.names)
+      const words = book.entries
+        .filter(entry => selected.has(entry.name))
+        .flatMap(entry => entry.words.map(word => ({ ...word, dayName: entry.name })))
+      return {
+        studentId: student.id,
+        studentName: student.name.trim(),
+        examDate: student.examDate,
+        bookName: book.name,
+        names: student.names,
+        summary: getSummary(student.names, book.entries),
+        direction, order,
+        questions: makeQuestions(words, student.questionCount, direction, order),
+      }
+    })
+    onChange(makeDocuments(groups, [], includeAnswers))
+    setStatus(mapped.length + '개 학생·교재 시험지를 생성했습니다. 범위를 확인한 뒤 한 번에 인쇄 / PDF를 눌러 주세요.')
+  }, [importedBatch, books, onChange, includeAnswers, direction, order])
   const active = students.find((student) => student.id === activeId)
   const activeBook = active ? books[active.bookId] : null
 
