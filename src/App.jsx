@@ -886,6 +886,44 @@ function BatchExamPage({ book, documents, onChange, onHome, onBooks }) {
   const [order, setOrder] = useState('random')
   const [includeAnswers, setIncludeAnswers] = useState(true)
   const [status, setStatus] = useState('')
+  const consumedImport = useRef(null)
+  // Import is transient and must match real word-book categories before enabling print.
+  useEffect(() => {
+    if (!importedBatch || consumedImport.current === importedBatch.nonce) return
+    if (importedBatch.students.some((item) => !books[item.bookId]?.entries?.length)) return
+    const unknown = []
+    const mapped = importedBatch.students.map((item, index) => {
+      const entries = books[item.bookId].entries
+      const normalize = (value) => String(value || '').replace(/\s+/g, '').toLowerCase().replace(/^day0*(\d+)$/i, (_, n) => 'day' + Number(n))
+      const names = item.names.map((name) => {
+        const aliases = item.bookId === 'neunglyulBase' ? {
+          '접사에따른혼동어휘': '접사에따른혼동어휘1',
+          'ly,s가붙은혼동어휘': '능률ly,s가붙은혼동어휘',
+        } : {}
+        const wanted = aliases[normalize(name)] || normalize(name)
+        const entry = entries.find((candidate) => normalize(candidate.name) === wanted)
+        if (!entry) unknown.push(item.name + ' · ' + name)
+        return entry?.name
+      }).filter(Boolean)
+      return {
+        ...makeAllBookStudent(index + 1),
+        name: item.name,
+        examDate: item.examDate,
+        bookId: item.bookId,
+        names: [...new Set(names)],
+        questionCount: String(QUESTIONS_PER_PAGE),
+      }
+    })
+    consumedImport.current = importedBatch.nonce
+    if (unknown.length) {
+      setStatus('단어장에 없는 범위가 있어 자동 가져오기를 중단했습니다: ' + unknown.join(', '))
+      return
+    }
+    setStudents(mapped)
+    setNextId(mapped.length + 1)
+    onChange([])
+    setStatus(mapped.length + '명(교재별)의 학습 범위를 가져왔습니다. 내용을 확인하고 전체 시험지를 만들어 주세요.')
+  }, [importedBatch, books, onChange])
   const active = students.find((student) => student.id === activeId)
 
   function update(id, patch) {
@@ -1092,6 +1130,7 @@ function AllBooksBatchPage({
   documents,
   onChange,
   onHome,
+  importedBatch,
 }) {
   const [students, setStudents] = useState(() => [
     makeAllBookStudent(1),
@@ -1502,6 +1541,7 @@ function SelectionDialog({ entries, student, onClose, onApply }) {
 function App() {
   const [view, setView] = useState('home')
   const [bookId, setBookId] = useState('onlyone')
+  const [importedBatch, setImportedBatch] = useState(null)
   const [books, setBooks] = useState(BOOKS)
   const [loadingBookIds, setLoadingBookIds] = useState([])
   const [documents, setDocuments] = useState({
@@ -1512,6 +1552,29 @@ function App() {
     neunglyulLite: { single: [], batch: [] },
     priorityBeginner: { single: [], batch: [] },
   })
+
+  useEffect(() => {
+    // Both GitHub Pages apps live on the same origin. No PII in query strings.
+    if (new URLSearchParams(window.location.search).get('onlyone-import') !== '1' || !window.opener) return
+    const trustedOrigin = window.location.origin
+    const receive = (event) => {
+      const data = event.data
+      if (event.origin !== trustedOrigin || event.source !== window.opener ||
+          data?.type !== 'ONLYONE_VOCA_DATA_V1' || !Array.isArray(data.students) ||
+          !data.nonce || data.students.length < 1 || data.students.length > 100) return
+      if (data.students.some(item =>
+        !item || typeof item.name !== 'string' || item.name.length > 50 ||
+        !Object.prototype.hasOwnProperty.call(BOOKS, item.bookId) ||
+        !Array.isArray(item.names) || !item.names.length || item.names.length > 80 ||
+        item.names.some(x => typeof x !== 'string' || x.length > 90) ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(item.examDate))) return
+      setImportedBatch(data)
+      setView('allBatch')
+    }
+    window.addEventListener('message', receive)
+    window.opener.postMessage({ type: 'ONLYONE_VOCA_READY_V1' }, trustedOrigin)
+    return () => window.removeEventListener('message', receive)
+  }, [])
 
   useEffect(() => {
     let ignored = false
@@ -1655,6 +1718,7 @@ function App() {
         )}
         {view === 'allBatch' && (
           <AllBooksBatchPage
+            importedBatch={importedBatch}
             books={books}
             loadingBookIds={loadingBookIds}
             documents={documents.allBatch}
