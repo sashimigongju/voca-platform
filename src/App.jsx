@@ -896,7 +896,12 @@ function BatchExamPage({ book, documents, onChange, onHome, onBooks }) {
       const entries = books[item.bookId].entries
       const normalize = (value) => String(value || '').replace(/\s+/g, '').toLowerCase().replace(/^day0*(\d+)$/i, (_, n) => 'day' + Number(n))
       const names = item.names.map((name) => {
-        const entry = entries.find((candidate) => normalize(candidate.name) === normalize(name))
+        const aliases = item.bookId === 'neunglyulBase' ? {
+          '접사에따른혼동어휘': '접사에따른혼동어휘1',
+          'ly,s가붙은혼동어휘': '능률ly,s가붙은혼동어휘',
+        } : {}
+        const wanted = aliases[normalize(name)] || normalize(name)
+        const entry = entries.find((candidate) => normalize(candidate.name) === wanted)
         if (!entry) unknown.push(item.name + ' · ' + name)
         return entry?.name
       }).filter(Boolean)
